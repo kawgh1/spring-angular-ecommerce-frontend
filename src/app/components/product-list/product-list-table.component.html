@@ -1,0 +1,31 @@
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Units in Stock</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        <tr *ngFor="let tempProduct of products">
+            <td>{{ tempProduct.name }}</td>
+            <td>{{ tempProduct.unitPrice | currency: 'USD' }}</td>
+            <td>{{ tempProduct.unitsInStock }}</td>
+
+
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+<!-- here we are accessing the products from the product-list.component.ts -->
+<!-- <p *ngFor="let tempProduct of products">
+
+    {{ tempProduct.name}}: {{tempProduct.unitPrice | currency: 'USD'}}
+
+</p> -->
