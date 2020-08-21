@@ -14,8 +14,19 @@ export class ProductService {
   constructor(private httpClient: HttpClient) { }
 
   // returns an Observable, maps the JSON data from Spring Data REST into a Product array
-  getProductList(): Observable<Product[]> {
-    return this.httpClient.get<GetResponse>(this.baseUrl).pipe(
+  getProductList(theCategoryId: number): Observable<Product[]> {
+
+    // need to build URL based on category id
+
+    // Since Spring Data REST in the Product Repository class automatically exposes 
+    // this endpoint -> "http://localhost:8080/api/products/search/findByCategoryId"
+
+    // so we build a dynamic search Url that takes in the user's click/input (as category id)
+
+    const searchUrl = `${this.baseUrl}/search/findByCategoryId?id=${theCategoryId}`;
+
+    // return this.httpClient.get<GetResponse>(this.baseUrl).pipe(
+    return this.httpClient.get<GetResponse>(searchUrl).pipe(
       map(response => response._embedded.products)
     );
 
