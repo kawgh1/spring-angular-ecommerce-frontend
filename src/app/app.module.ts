@@ -6,12 +6,35 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { HttpClientModule } from '@angular/common/http';
 import { ProductService } from 'src/app/services/product.service';
 
+import { Routes, RouterModule } from '@angular/router';
+
+// Order of routes is important
+// First Match wins
+// Start from most specific to most generic
+
+const routes: Routes = [
+  { path: 'category/:id', component: ProductListComponent },
+  { path: 'category', component: ProductListComponent },
+  { path: 'products', component: ProductListComponent },
+  // if no path specified, go to products
+  { path: '', redirectTo: '/products', pathMatch: 'full' },
+  // if any other path entered besides what's above, go to products
+  { path: '**', redirectTo: '/products', pathMatch: 'full' }
+
+];
+
+
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
     ProductListComponent
   ],
   imports: [
+    RouterModule.forRoot(routes), // Then configure Router based on Routes
     BrowserModule,
     HttpClientModule
   ],
