@@ -3,6 +3,8 @@
 // this matches the data coming back as JSON from the Spring Data REST API
 
 export class Product {
+
+    id: string;
     sku: string;
     name: string;
     description: string;

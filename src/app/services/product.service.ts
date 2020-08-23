@@ -11,11 +11,26 @@ import { ProductCategory } from '../common/product-category';
 export class ProductService {
 
 
+
+
   private baseUrl = "http://localhost:8080/api/products"; // hardcoded
 
   private categoryUrl = "http://localhost:8080/api/product-category";
 
   constructor(private httpClient: HttpClient) { }
+
+
+
+  // this method is called when a user clicks a product image or name
+  // used to show Product Details page by called REST API on product id
+  getProduct(theProductId: number): Observable<Product> {
+
+    // need to build URL based on product id
+    const productUrl = `${this.baseUrl}/${theProductId}`;
+
+    return this.httpClient.get<Product>(productUrl);
+
+  }
 
   // returns an Observable, maps the JSON data from Spring Data REST into a Product array
   getProductList(theCategoryId: number): Observable<Product[]> {
@@ -28,6 +43,20 @@ export class ProductService {
     // so we build a dynamic search Url that takes in the user's click/input (as category id)
 
     const searchUrl = `${this.baseUrl}/search/findByCategoryId?id=${theCategoryId}`;
+
+    // return this.httpClient.get<GetResponse>(this.baseUrl).pipe(
+    return this.httpClient.get<GetResponseProducts>(searchUrl).pipe(
+      map(response => response._embedded.products)
+    );
+
+  }
+
+
+  searchProducts(theKeyword: string): Observable<Product[]> {
+
+    // need to build URL based on user entered 'keyword'
+
+    const searchUrl = `${this.baseUrl}/search/findByNameContaining?name=${theKeyword}`;
 
     // return this.httpClient.get<GetResponse>(this.baseUrl).pipe(
     return this.httpClient.get<GetResponseProducts>(searchUrl).pipe(
