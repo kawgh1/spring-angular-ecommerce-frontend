@@ -11,6 +11,15 @@ import { ProductCategoryMenuComponent } from './components/product-category-menu
 import { SearchComponent } from './components/search/search.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 
+
+// Pagination required installing ng-bootstrap
+// had to run
+// ng add @angular/localize
+// npm install @ng-bootstrap/ng-bootstrap
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; // ng-bootstrap for pagination
+
+
+
 // Order of routes is important
 // First Match wins
 // Start from most specific to most generic
@@ -45,7 +54,8 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes), // Then configure Router based on Routes
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule // ng module for pagination from ng-bootstrap
   ],
   providers: [ProductService], // this allows us to inject the ProductService into other parts of the application
   bootstrap: [AppComponent]

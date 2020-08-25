@@ -45,9 +45,39 @@ export class ProductService {
     const searchUrl = `${this.baseUrl}/search/findByCategoryId?id=${theCategoryId}`;
 
     // return this.httpClient.get<GetResponse>(this.baseUrl).pipe(
-    return this.httpClient.get<GetResponseProducts>(searchUrl).pipe(
-      map(response => response._embedded.products)
-    );
+    return this.getProducts(searchUrl);
+
+
+  }
+
+
+
+  // helper method
+  private getProducts(searchUrl: string): Observable<Product[]> {
+    return this.httpClient.get<GetResponseProducts>(searchUrl).pipe(map(response => response._embedded.products));
+  }
+
+
+
+  // pagination method
+  getProductListPaginate(thePage: number, thePageSize: number,
+    theCategoryId: number): Observable<GetResponseProducts> {
+
+    // need to build URL based on category id, page number and page size
+
+    // Since Spring Data REST in the Product Repository class automatically exposes 
+    // this endpoint -> "http://localhost:8080/api/products/search/findByCategoryId"
+
+    // so we build a dynamic search Url that takes in the user's click/input (as category id)
+
+    // since Spring Data REST supports pagination out of the box, just send the parameters
+    // for page and size and the pagination url is recognized for data retrieval
+    // http://localhost:8080/api/products?page=0&size=10
+
+    const searchUrl = `${this.baseUrl}/search/findByCategoryId?id=${theCategoryId}`
+      + `&page=${thePage}&size=${thePageSize}`;
+
+    return this.httpClient.get<GetResponseProducts>(searchUrl);
 
   }
 
@@ -56,12 +86,10 @@ export class ProductService {
 
     // need to build URL based on user entered 'keyword'
 
-    const searchUrl = `${this.baseUrl}/search/findByNameContaining?name=${theKeyword}`;
+    const searchUrl = `${this.baseUrl}/search/findByNameContaining ? name = ${theKeyword} `;
 
     // return this.httpClient.get<GetResponse>(this.baseUrl).pipe(
-    return this.httpClient.get<GetResponseProducts>(searchUrl).pipe(
-      map(response => response._embedded.products)
-    );
+    return this.getProducts(searchUrl);
 
   }
 
@@ -76,14 +104,25 @@ export class ProductService {
     );
   }
 
+
+
 }
 
 interface GetResponseProducts { // unwraps the JSON from Spring Data REST _embedded entry
 
   _embedded: {
     products: Product[];
+  },
+  // pagination
+  page: {
+    size: number, // size of current page
+    totalElements: number, // total 'count' of all elements in database, but not returning them
+    totalPages: number, // Total pages available
+    number: number // current page number
   }
 }
+
+
 
 interface GetResponseProductCategory { // unwraps the JSON from Spring Data REST _embedded entry
 

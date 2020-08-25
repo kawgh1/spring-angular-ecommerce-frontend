@@ -12,10 +12,16 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductListComponent implements OnInit {
 
-  products: Product[];
-  currentCategoryId: number;
+  products: Product[] = [];
+  currentCategoryId: number = 1;
+  previousCategoryId: number = 1;
   currentCategoryName: string;
-  searchMode: boolean;
+  searchMode: boolean = false;
+
+  // new properties for pagination
+  thePageNumber: number = 1;
+  thePageSize: number = 10;
+  theTotalElements: number = 0;
 
   constructor(private productService: ProductService, private route: ActivatedRoute) {
 
@@ -113,14 +119,61 @@ export class ProductListComponent implements OnInit {
       this.currentCategoryName = 'Books';
     }
 
+    // pagination workflow
+    //
+    // Check if we hae a different category than previous (state)
+    // Note: Angular will reuse a component if it is currently being viewed
+    //
+
+    // if we have a different category id than previous,
+    // then reset thePageNumber back to 1
+    if (this.previousCategoryId != this.currentCategoryId) {
+      this.thePageNumber = 1;
+    }
+
+    this.previousCategoryId = this.currentCategoryId;
+
+    console.log(`currentCategoryId=${this.currentCategoryId}, thePageNumber=${this.thePageNumber}`);
+
+
+
+
     // now get the products for the given category id
-    this.productService.getProductList(this.currentCategoryId).subscribe(
+    // this.productService.getProductList(this.currentCategoryId).subscribe(
 
-      data => {
-        this.products = data;
-      }
-    );
+    //   data => {
+    //     this.products = data;
+    //   }
+    // );
 
+    // Angular Pagination component: pages are 1 Based 
+    // Spring Data REST: pages are 0 Based, thus pageNumber - 1
+    this.productService.getProductListPaginate(this.thePageNumber - 1,
+      this.thePageSize,
+      this.currentCategoryId)
+      .subscribe(this.processResult());
+
+  }
+
+  // On the left are properties defined in this class
+  // on the right is the data rec'd back from Spring Data REST JSON database
+  // so we're assigning the returned JSON data as the properties for pagination display
+  processResult() {
+
+    return data => {
+
+      this.products = data._embedded.products;
+      this.thePageNumber = data.page.number + 1; // + 1 because Spring Data REST is 0 based
+      this.thePageSize = data.page.size;
+      this.theTotalElements = data.page.totalElements; // defined as totalElements in product.service.ts
+
+    };
+  }
+
+  updatePageSize(pageSize: number) {
+    this.thePageSize = pageSize;
+    this.thePageNumber = 1;
+    this.listProducts();
   }
 
 }
