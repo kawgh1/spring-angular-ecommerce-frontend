@@ -37,22 +37,25 @@
 
             <!-- begin footer -->
             <div class="footer-pagination">
-                <div class="row">
-                    <div class="col-md-6"></div>
+                <!--  if products empty / not found, then don't display pagination -->
+                <div *ngIf="theTotalElements != 0" class="row">
 
                     <div class="col-md-6">
                         <div class="row">
                             <div class="col-md-9" style="padding-left: 30%">
 
+                                <!-- left: parameters of ngb-pagination component
+                                     right: properties of product-list.component.ts -->
                                 <ngb-pagination [(page)]="thePageNumber" [pageSize]="thePageSize"
-                                    [collectionSize]="theTotalElements" (pageChange)="listProducts()">
+                                    [collectionSize]="theTotalElements" (pageChange)="listProducts()" [maxSize]="5"
+                                    [boundaryLinks]="true">
 
                                 </ngb-pagination>
 
                             </div>
 
                             <div class="col-md-3 mt-2" style="text-align: right;">
-                                <span class="mr-2">Page Size</span>
+                                <span class="mr-2">Results per Page</span>
 
                                 <select (change)="updatePageSize($event.target.value)">
                                     <option selected="true">5</option>
@@ -64,6 +67,7 @@
 
                         </div>
                     </div>
+
 
                 </div>
             </div>
