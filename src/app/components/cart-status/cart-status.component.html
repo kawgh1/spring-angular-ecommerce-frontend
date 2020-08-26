@@ -1,7 +1,15 @@
 <div class="cart-area d-n">
     <a href="shopping-detail.html">
-        <div class="total">$36.98
+
+        <!-- was hardcoded -->
+        <!-- <div class="total">$36.98
             <span> 2</span>
+        </div> -->
+
+        <!-- now these update every time the cart-status component updates 
+                when user adds/removes item to cart  -->
+        <div class="total">{{ totalPrice | currency: 'USD' }}
+            <span> {{ totalQuantity }}</span>
         </div>
 
         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
