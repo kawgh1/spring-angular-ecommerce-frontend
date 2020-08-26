@@ -16,7 +16,8 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 // had to run
 // ng add @angular/localize
 // npm install @ng-bootstrap/ng-bootstrap
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; // ng-bootstrap for pagination
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CartStatusComponent } from './components/cart-status/cart-status.component'; // ng-bootstrap for pagination
 
 
 
@@ -49,7 +50,8 @@ const routes: Routes = [
     ProductListComponent,
     ProductCategoryMenuComponent,
     SearchComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    CartStatusComponent
   ],
   imports: [
     RouterModule.forRoot(routes), // Then configure Router based on Routes
