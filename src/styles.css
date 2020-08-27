@@ -576,9 +576,9 @@ input.au-input.au-input-xl{
   padding: 4rem 2rem;
 
   /* Grid styles */
-  display: grid;
+  /* display: grid;
   align-items: center;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); */
 }
 
 
@@ -967,7 +967,7 @@ footer ul li{
         margin-right:15px
     }
         .main-content.page-m{
-        padding:10% 0!important
+        padding:10% 30% 10% 5%
     }
     .header-mobile .navbar-mobile{
         display:none;

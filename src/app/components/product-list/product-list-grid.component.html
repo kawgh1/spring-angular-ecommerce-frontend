@@ -4,7 +4,8 @@
         <h4>{{ currentCategoryName }}</h4>
         <hr>
 
-        <div class="container-fluid">
+        <!-- grid styles in styles.css product container-->
+        <div class="container-fluid product-container clearfix">
             <div class="row">
 
                 <!-- loop over the collection of products -->
@@ -35,44 +36,52 @@
                 </div>
             </div>
 
-            <!-- begin footer -->
-            <div class="footer-pagination">
-                <!--  if products empty / not found, then don't display pagination -->
-                <div *ngIf="theTotalElements != 0" class="row">
+            <!-- end product container -->
+        </div>
 
-                    <div class="col-md-6">
-                        <div class="row">
-                            <div class="col-md-9" style="padding-left: 30%">
 
-                                <!-- left: parameters of ngb-pagination component
-                                     right: properties of product-list.component.ts -->
-                                <ngb-pagination [(page)]="thePageNumber" [pageSize]="thePageSize"
-                                    [collectionSize]="theTotalElements" (pageChange)="listProducts()" [maxSize]="5"
-                                    [boundaryLinks]="true">
+        <br>
+        <br>
+        <br>
 
-                                </ngb-pagination>
 
-                            </div>
+        <!-- begin footer -->
+        <div class="footer-pagination">
+            <!--  if products empty / not found, then don't display pagination -->
+            <div *ngIf="theTotalElements != 0" class="row">
 
-                            <div class="col-md-3 mt-2" style="text-align: right;">
-                                <span class="mr-2">Results per Page</span>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-9" style="padding-left: 20%">
 
-                                <select (change)="updatePageSize($event.target.value)">
-                                    <option selected="true">5</option>
-                                    <option>10</option>
-                                    <option>20</option>
-                                    <option>50</option>
-                                </select>
-                            </div>
+                            <!-- left: parameters of ngb-pagination component
+                                 right: properties of product-list.component.ts -->
+                            <ngb-pagination [(page)]="thePageNumber" [pageSize]="thePageSize"
+                                [collectionSize]="theTotalElements" (pageChange)="listProducts()" [maxSize]="5"
+                                [boundaryLinks]="true">
+
+                            </ngb-pagination>
 
                         </div>
+
+                        <div class="col-md-3 mt-2" style="padding-right: auto">
+                            <span class="mr-2">Results per Page</span>
+
+                            <select (change)="updatePageSize($event.target.value)">
+                                <option selected="true">5</option>
+                                <option>10</option>
+                                <option>20</option>
+                                <option>50</option>
+                            </select>
+                        </div>
+
                     </div>
-
-
                 </div>
+
+
             </div>
-            <!-- end footer -->
         </div>
+        <!-- end footer -->
     </div>
 </div>
 

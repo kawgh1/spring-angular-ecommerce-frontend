@@ -1,0 +1,26 @@
+th {
+    text-align: center;
+}
+
+/* this style because xtra small buttons removed from Bootstrap 4+ */
+.btn {
+    font-size: .5em;
+    font-weight: bold;
+}
+
+/* label {
+    font-weight: bold;
+} */
+
+/* subtotal
+.mt-2 {
+    font-weight: bold;
+} */
+
+img {
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 15rem;
+}
+

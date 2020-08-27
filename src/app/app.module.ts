@@ -18,7 +18,9 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 // npm install @ng-bootstrap/ng-bootstrap
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CartStatusComponent } from './components/cart-status/cart-status.component';
-import { CartDetailsComponent } from './components/cart-details/cart-details.component'; // ng-bootstrap for pagination
+import { CartDetailsComponent } from './components/cart-details/cart-details.component';
+import { CheckoutComponent } from './components/checkout/checkout.component'; // ng-bootstrap for pagination
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -27,6 +29,7 @@ import { CartDetailsComponent } from './components/cart-details/cart-details.com
 // Start from most specific to most generic
 
 const routes: Routes = [
+  { path: 'checkout', component: CheckoutComponent },
   { path: 'cart-details', component: CartDetailsComponent },
   { path: 'products/:id', component: ProductDetailsComponent },
   { path: 'search/:keyword', component: ProductListComponent },
@@ -54,13 +57,15 @@ const routes: Routes = [
     SearchComponent,
     ProductDetailsComponent,
     CartStatusComponent,
-    CartDetailsComponent
+    CartDetailsComponent,
+    CheckoutComponent
   ],
   imports: [
     RouterModule.forRoot(routes), // Then configure Router based on Routes
     BrowserModule,
     HttpClientModule,
-    NgbModule // ng module for pagination from ng-bootstrap
+    NgbModule, // ng module for pagination from ng-bootstrap
+    ReactiveFormsModule // gives support for Reactive Forms
   ],
   providers: [ProductService], // this allows us to inject the ProductService into other parts of the application
   bootstrap: [AppComponent]
