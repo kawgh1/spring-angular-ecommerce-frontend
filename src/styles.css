@@ -322,7 +322,7 @@ input.au-input.au-input-xl{
     left:0;
     top:0;
     bottom:0;
-    background:#fff;
+    background:#000;
     overflow-y:auto;
 }
 
@@ -371,7 +371,7 @@ input.au-input.au-input-xl{
 
 .navbar-sidebar .navbar-list li a{
     display:block;
-    color:#555;
+    color:rgb(212, 208, 208);
     font-size:16px;
     padding:5px 0;
 }
@@ -382,6 +382,7 @@ input.au-input.au-input-xl{
 
 .navbar-sidebar .navbar-list li a:hover{
     color:#0da8e4;
+    text-decoration: none;
 }
 
 /* 
@@ -818,7 +819,7 @@ footer ul li{
     }
 }
 @media (max-width:1315px) and (min-width:992px){
-    .header-desktop3 .section-content{
+    .header-desktop .section-content{
         padding:0 15px
     }
 }
@@ -988,7 +989,7 @@ footer ul li{
         height:80px
     }
     a.logo img{
-        width:110px
+        width:75px
         background-color #000000;
     }
 

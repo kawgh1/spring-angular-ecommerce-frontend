@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CartItem } from '../common/cart-item';
-import { Subject } from 'rxjs';
+import { Subject, ReplaySubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,12 +8,28 @@ import { Subject } from 'rxjs';
 export class CartService {
 
 
-  cartItems: CartItem[] = [];
+  cartItems: CartItem[];
 
-  totalPrice: Subject<number> = new Subject<number>();
-  totalQuantity: Subject<number> = new Subject<number>();
+  totalPrice: ReplaySubject<number> = new ReplaySubject<number>();
+  totalQuantity: ReplaySubject<number> = new ReplaySubject<number>();
 
-  constructor() { }
+  constructor() {
+
+    // This now uses the constructor to initialises the cartItems variable.
+    // If there is a value in the sessionStorage cartItems value we initialise with that value, 
+    // otherwise we initialise to an empty array.
+    // The reason for JSON.parse is sessionStorage and localStorage store strings. 
+    // So we need to convert the string back into a javascript object equivalent (json).
+    this.cartItems = JSON.parse(sessionStorage.getItem('cartItems'))! + null ?
+      JSON.parse(sessionStorage.getItem('cartItems')) : [];
+  }
+
+  // This creates a function which sets the sessionStorage cartItems value with the currentItems variable value.
+  // The reason for JSON.stringify is sessionStorage and localStorage store strings. 
+  // So this allows us to convert our array into a string equivalent.
+  persistCartItems() {
+    sessionStorage.setItem('cartItems', JSON.stringify(this.cartItems));
+  }
 
 
   addToCart(theCartItem: CartItem) {
@@ -63,8 +79,8 @@ export class CartService {
     let totalQuantityValue: number = 0;
 
     for (let currentCartItem of this.cartItems) {
-      totalPriceValue += currentCartItem.quantity * currentCartItem.unitPrice;
-      totalQuantityValue += currentCartItem.quantity;
+      totalPriceValue += (currentCartItem.quantity * currentCartItem.unitPrice);
+      totalQuantityValue += (currentCartItem.quantity);
     }
 
     // publish the new values ... all subscribers will receive the new data
@@ -75,6 +91,10 @@ export class CartService {
 
     // log cart data just for debugging purposes
     this.logCartData(totalPriceValue, totalQuantityValue);
+
+    // Every time we manipulate this.cartItems variable 
+    // we should update the sessionStorage variable value to reflect this.
+    this.persistCartItems();
   }
 
   logCartData(totalPriceValue: number, totalQuantityValue: number) {

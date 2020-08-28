@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { ShopFormService } from 'src/app/services/shop-form.service';
 import { Country } from 'src/app/common/country';
 import { State } from 'src/app/common/state';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-checkout',
@@ -31,7 +32,8 @@ export class CheckoutComponent implements OnInit {
 
 
   constructor(private formBuilder: FormBuilder,
-    private shopFormService: ShopFormService) { }
+    private shopFormService: ShopFormService,
+    private cartService: CartService) { }
 
 
 
@@ -72,8 +74,8 @@ export class CheckoutComponent implements OnInit {
       creditCard: this.formBuilder.group({
 
         cardType: [''],
-        NameOnCard: [''],
-        CardNumber: [''],
+        nameOnCard: [''],
+        cardNumber: [''],
         securityCode: [''],
         expirationMonth: [''],
         expirationYear: ['']
@@ -121,6 +123,9 @@ export class CheckoutComponent implements OnInit {
         this.countries = data;
       }
     );
+
+    // populate totalPrice and totalQuantity
+    this.reviewCartDetails();
   }
 
   // validation methods used in checkout.component.html
@@ -128,7 +133,21 @@ export class CheckoutComponent implements OnInit {
   get lastName() { return this.checkoutFormGroup.get('customer.lastName'); }
   get email() { return this.checkoutFormGroup.get('customer.email'); }
 
+  reviewCartDetails() {
 
+    this.cartService.totalQuantity.subscribe(
+
+      totalQuantity => this.totalQuantity = totalQuantity
+
+    );
+
+    this.cartService.totalPrice.subscribe(
+
+      totalPrice => this.totalPrice = totalPrice
+
+    );
+
+  }
 
 
 
