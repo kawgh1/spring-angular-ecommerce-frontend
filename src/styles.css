@@ -541,10 +541,10 @@ input.au-input.au-input-xl{
     margin-left: 5px;
 }
 .product-box{
-    margin: 2rem .75rem;
-    /* border: 1px solid red; */
+    margin: 1rem .75rem;
+    width: 15rem;
+    border: 1px solid red;
     height: 25rem;
-    max-width: 20rem;
     text-align: center;
 }
 .price{
@@ -578,7 +578,7 @@ input.au-input.au-input-xl{
   /* Grid styles */
   display: grid;
   align-items: center;
-  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
 } 
 
 

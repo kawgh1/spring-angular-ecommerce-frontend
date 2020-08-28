@@ -1,8 +1,0 @@
-.product-container {
-    background-size: cover;
-  padding: 4rem 2rem;
-
-  /* Grid styles */
-  display: grid;
-  align-items: center;
-  grid-template-columns: repeat(auto-fill, minmax(min(10rem, 100%), 1fr));} 

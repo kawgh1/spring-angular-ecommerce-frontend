@@ -5,13 +5,13 @@
         <hr>
 
         <!-- grid styles in styles.css product container-->
-        <div class="container-fluid">
-            <div class="row">
+        <div class="container-fluid ">
+            <div class="product-container ">
 
                 <!-- loop over the collection of products -->
                 <div *ngFor="let tempProduct of products" class="col-md-3">
 
-                    <div class="product-box">
+                    <div class="product-box ">
 
                         <!-- link to product details on image -->
                         <a routerLink="/products/{{ tempProduct.id }}">
@@ -37,36 +37,35 @@
             </div>
 
             <!-- begin footer -->
-            <div class="footer-pagination">
+            <div class="footer-pagination ">
                 <!--  if products empty / not found, then don't display pagination -->
                 <div *ngIf="theTotalElements != 0" class="row">
                     <div class="col-md-6"></div>
 
                     <div class="col-md-6">
-                        <div class="row">
-                            <div class="col-md-9" style="padding-left: 30%">
+                        <div class="col-md-3">
 
-                                <ngb-pagination [(page)]="thePageNumber" [pageSize]="thePageSize"
-                                    [collectionSize]="theTotalElements" [maxSize]="5" [boundaryLinks]="true"
-                                    (pageChange)="listProducts()">
+                            <ngb-pagination [(page)]="thePageNumber" [pageSize]="thePageSize"
+                                [collectionSize]="theTotalElements" [maxSize]="5" [boundaryLinks]="true"
+                                (pageChange)="listProducts()">
 
-                                </ngb-pagination>
-
-                            </div>
-
-                            <div class="col-md-3 mt-2" style="text-align: right;">
-                                <span class="mr-2">Page Size</span>
-
-                                <select (change)="updatePageSize($event.target.value)">
-                                    <option>2</option>
-                                    <option selected="true">5</option>
-                                    <option>10</option>
-                                    <option>20</option>
-                                    <option>50</option>
-                                </select>
-                            </div>
+                            </ngb-pagination>
 
                         </div>
+
+                        <div class="col-md-3 mt-2" style="margin-left:25%;">
+                            <span class="mr-2">Page Size</span>
+
+                            <select (change)="updatePageSize($event.target.value)">
+                                <option>2</option>
+                                <option selected="true">5</option>
+                                <option>10</option>
+                                <option>20</option>
+                                <option>50</option>
+                            </select>
+                        </div>
+
+
                     </div>
 
                 </div>
