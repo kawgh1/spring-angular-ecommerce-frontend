@@ -307,7 +307,7 @@ input.au-input.au-input-xl{
     -moz-transform:translate(-50%,-50%);
     -ms-transform:translate(-50%,-50%);
     -o-transform:translate(-50%,-50%);
-    transform:translate(-50%,-50%)
+    transform:translate(-50%,-50%);
 }
 
 /* 
@@ -323,7 +323,7 @@ input.au-input.au-input-xl{
     top:0;
     bottom:0;
     background:#fff;
-    overflow-y:auto
+    overflow-y:auto;
 }
 
 .menu-sidebar .logo{
@@ -345,43 +345,43 @@ input.au-input.au-input-xl{
     box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
     border-right:1px solid #e5e5e5;
     position:relative;
-    z-index:3
+    z-index:3;
 }
 
 .menu-sidebar .navbar-list .navbar-sub-list{
     display:none;
-    padding-left:34px
+    padding-left:34px;
 }
 
 .menu-sidebar .navbar-list .navbar-sub-list li a{
-    padding:11.5px 0
+    padding:11.5px 0;
 }
 
 .menu-sidebar-content{
     position:relative;
     height:-webkit-calc(100vh - 75px);
     height:-moz-calc(100vh - 75px);
-    height:calc(100vh - 75px)
+    height:calc(100vh - 75px);
 }
 
 .navbar-sidebar{
     padding:35px;
-    padding-bottom:0
+    padding-bottom:0;
 }
 
 .navbar-sidebar .navbar-list li a{
     display:block;
     color:#555;
     font-size:16px;
-    padding:5px 0
+    padding:5px 0;
 }
 
 .navbar-sidebar .navbar-list li a i{
-    margin-right:19px
+    margin-right:19px;
 }
 
 .navbar-sidebar .navbar-list li a:hover{
-    color:#0da8e4
+    color:#0da8e4;
 }
 
 /* 
@@ -527,7 +527,7 @@ input.au-input.au-input-xl{
  */
 
  .product-box img {
-    width: 5rem;
+    width: 15rem;
     
     
 }
@@ -541,8 +541,9 @@ input.au-input.au-input-xl{
 }
 .product-box{
     margin: 2rem .75rem;
-    border: 1px solid red;
-    height: 30rem;
+    /* border: 1px solid red; */
+    height: 25rem;
+    max-width: 20rem;
     text-align: center;
 }
 .price{
@@ -570,13 +571,14 @@ input.au-input.au-input-xl{
 }
 
 .product-container {
-    /* background-size: cover; */
+    background-size: cover;
   padding: 4rem 2rem;
 
   /* Grid styles */
   display: grid;
   align-items: center;
-  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));} 
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+} 
 
 
 
