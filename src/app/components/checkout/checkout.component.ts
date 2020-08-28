@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { ShopFormService } from 'src/app/services/shop-form.service';
 import { Country } from 'src/app/common/country';
 import { State } from 'src/app/common/state';
@@ -43,9 +43,12 @@ export class CheckoutComponent implements OnInit {
 
       customer: this.formBuilder.group({
 
-        firstName: [''],
-        lastName: [''],
-        email: ['']
+        // firstName: [''],
+        firstName: new FormControl('', [Validators.required, Validators.minLength(2)]),
+        // lastName: [''],
+        lastName: new FormControl('', [Validators.required, Validators.minLength(2)]),
+        // email: ['']
+        email: new FormControl('', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')])
       }),
 
       shippingAddress: this.formBuilder.group({
@@ -117,8 +120,13 @@ export class CheckoutComponent implements OnInit {
         // set checkout component property 'countries' to = the returned countries API data
         this.countries = data;
       }
-    )
+    );
   }
+
+  // validation methods used in checkout.component.html
+  get firstName() { return this.checkoutFormGroup.get('customer.firstName'); }
+  get lastName() { return this.checkoutFormGroup.get('customer.lastName'); }
+  get email() { return this.checkoutFormGroup.get('customer.email'); }
 
 
 

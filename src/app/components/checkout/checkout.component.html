@@ -15,6 +15,19 @@
                         <div class="col-md-9">
                             <div class="input-space">
                                 <input formControlName="firstName" type="text">
+                                <!-- validator method dirty=did user change field value, touched=did user change fields -->
+                                <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
+                                    class="alert alert-danger mt-1">
+
+                                    <div *ngIf="firstName.errors.required">
+                                        First Name is required
+                                    </div>
+
+                                    <div *ngIf="firstName.errors.minlength">
+                                        First Name must be at least 2 characters
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -24,6 +37,20 @@
                         <div class="col-md-9">
                             <div class="input-space">
                                 <input formControlName="lastName" type="text">
+
+                                <!-- validator method dirty=did user change field value, touched=did user change fields -->
+                                <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
+                                    class="alert alert-danger mt-1">
+
+                                    <div *ngIf="lastName.errors.required">
+                                        Last Name is required
+                                    </div>
+
+                                    <div *ngIf="lastName.errors.minlength">
+                                        Last Name must be at least 2 characters
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -33,6 +60,22 @@
                         <div class="col-md-9">
                             <div class="input-space">
                                 <input formControlName="email" type="text">
+
+                                <!-- validator method dirty=did user change field value, touched=did user change fields -->
+                                <div *ngIf="email.invalid && (email.dirty || email.touched)"
+                                    class="alert alert-danger mt-1">
+
+                                    <div *ngIf="email.errors.required">
+                                        Email is required
+                                    </div>
+
+                                    <div *ngIf="email.errors.pattern">
+                                        Email must be valid format
+                                    </div>
+
+                                </div>
+
+
                             </div>
                         </div>
                     </div>
@@ -261,22 +304,14 @@
 
 
                 <!-- submit button -->
-                <div>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-info">Purchase</button>
-                    </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-info">Purchase</button>
                 </div>
-
-
-
-
-
 
             </form>
 
-
         </div>
-
 
     </div>
 </div>
