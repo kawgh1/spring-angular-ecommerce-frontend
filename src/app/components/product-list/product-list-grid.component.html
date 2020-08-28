@@ -5,7 +5,7 @@
         <hr>
 
         <!-- grid styles in styles.css product container-->
-        <div class="container-fluid product-container clearfix">
+        <div class="container-fluid">
             <div class="row">
 
                 <!-- loop over the collection of products -->
@@ -18,76 +18,64 @@
                             <img src="{{ tempProduct.imageUrl }}" class="img-responsive">
                         </a>
 
-                        <!-- link to product details on image -->
+                        <!-- link to product details on name -->
                         <a routerLink="/products/{{ tempProduct.id }}">
                             <h1>{{ tempProduct.name }}</h1>
                         </a>
 
                         <div class="price">{{ tempProduct.unitPrice | currency:'USD' }}</div>
                         <button (click)="addToCart(tempProduct)" class="btn btn-primary btn-sm">Add to cart</button>
-
                     </div>
 
                 </div>
 
-                <!-- if products empty / not found, then display message to user -->
+                <!-- if products empty then display a message-->
                 <div *ngIf="products?.length == 0" class="alert alert-warning col-md-12" role="alert">
                     Sorry! No products found.
                 </div>
+
             </div>
 
-            <!-- end product container -->
-        </div>
+            <!-- begin footer -->
+            <div class="footer-pagination">
+                <!--  if products empty / not found, then don't display pagination -->
+                <div *ngIf="theTotalElements != 0" class="row">
+                    <div class="col-md-6"></div>
 
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-9" style="padding-left: 30%">
 
-        <br>
-        <br>
-        <br>
+                                <ngb-pagination [(page)]="thePageNumber" [pageSize]="thePageSize"
+                                    [collectionSize]="theTotalElements" [maxSize]="5" [boundaryLinks]="true"
+                                    (pageChange)="listProducts()">
 
+                                </ngb-pagination>
 
-        <!-- begin footer -->
-        <div class="footer-pagination">
-            <!--  if products empty / not found, then don't display pagination -->
-            <div *ngIf="theTotalElements != 0" class="row">
+                            </div>
 
-                <div class="col-md-6">
-                    <div class="row">
-                        <div class="col-md-9" style="padding-left: 20%">
+                            <div class="col-md-3 mt-2" style="text-align: right;">
+                                <span class="mr-2">Page Size</span>
 
-                            <!-- left: parameters of ngb-pagination component
-                                 right: properties of product-list.component.ts -->
-                            <ngb-pagination [(page)]="thePageNumber" [pageSize]="thePageSize"
-                                [collectionSize]="theTotalElements" (pageChange)="listProducts()" [maxSize]="5"
-                                [boundaryLinks]="true">
-
-                            </ngb-pagination>
+                                <select (change)="updatePageSize($event.target.value)">
+                                    <option>2</option>
+                                    <option selected="true">5</option>
+                                    <option>10</option>
+                                    <option>20</option>
+                                    <option>50</option>
+                                </select>
+                            </div>
 
                         </div>
-
-                        <div class="col-md-3 mt-2" style="padding-right: auto">
-                            <span class="mr-2">Results per Page</span>
-
-                            <select (change)="updatePageSize($event.target.value)">
-                                <option selected="true">5</option>
-                                <option>10</option>
-                                <option>20</option>
-                                <option>50</option>
-                            </select>
-                        </div>
-
                     </div>
+
                 </div>
-
-
             </div>
+            <!-- end footer -->
+
         </div>
-        <!-- end footer -->
     </div>
 </div>
-
-
-
-
 
 <!-- First draft - basic table view
     

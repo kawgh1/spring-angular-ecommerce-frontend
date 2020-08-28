@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~@fortawesome/fontawesome-free/css/all.css";
 /* 
  * ----------------------------
  * Common CSS
@@ -11,7 +12,7 @@
     padding:0;
     -webkit-box-sizing:border-box;
     -moz-box-sizing:border-box;
-    box-sizing:border-box
+    box-sizing:border-box;
 }
 
 body{
@@ -525,16 +526,13 @@ input.au-input.au-input-xl{
  * ----------------------------
  */
 
-.product-box img {
-    /* width: 5rem; */
-    height: 40%;
-    width: 100%;
+ .product-box img {
+    width: 5rem;
+    
     
 }
 
 .items select {
-    width: 2.5rem;
-    height: 6rem;
     border-radius: 40px;
     padding-left: 15px;
     margin-bottom: 10px;
@@ -572,14 +570,13 @@ input.au-input.au-input-xl{
 }
 
 .product-container {
-    background-size: cover;
+    /* background-size: cover; */
   padding: 4rem 2rem;
 
   /* Grid styles */
-  /* display: grid;
+  display: grid;
   align-items: center;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); */
-}
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));} 
 
 
 
