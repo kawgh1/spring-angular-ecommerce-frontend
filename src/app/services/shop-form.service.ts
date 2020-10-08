@@ -10,8 +10,8 @@ import { map } from 'rxjs/operators';
 })
 export class ShopFormService {
 
-  private countriesUrl = 'http://localhost:8080/api/countries';
-  private statesUrl = 'http://localhost:8080/api/states';
+  private countriesUrl = 'https://springboot-angular-ecommerce.herokuapp.com/api/countries';
+  private statesUrl = 'https://springboot-angular-ecommerce.herokuapp.com/api/states';
 
 
 
