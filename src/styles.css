@@ -1194,10 +1194,25 @@ footer ul li{
   align-items: center;
     }
 
+   
+
+    .au-btn-submit{
+        position:relative;
+        right:10px;
+        min-width:60px;
+        color:#fff;
+        border:1px solid #205b8d;
+        -webkit-border-radius:3px;
+        -moz-border-radius:3px;
+        border-radius:0;
+        background:#205b8d
+        height: 35px;
+    }
     input.au-input.au-input-xl{
         border-radius:0!important;
         margin-right:0;
-        max-width: 150px;
+        max-width: 125px;
+        height: 35px;
     }
 
     .navbar {
