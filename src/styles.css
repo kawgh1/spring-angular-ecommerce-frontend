@@ -1205,7 +1205,7 @@ footer ul li{
         -webkit-border-radius:3px;
         -moz-border-radius:3px;
         border-radius:0;
-        background:#205b8d
+        background:#205b8d;
         height: 35px;
     }
     input.au-input.au-input-xl{
@@ -1239,7 +1239,7 @@ footer ul li{
     }
 
     .cart-area i{
-        font-size:12px;
+        font-size:16px;
         float:left;
         margin-top:16px;
         color:#ffffff;
