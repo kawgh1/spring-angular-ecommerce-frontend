@@ -1231,6 +1231,7 @@ footer ul li{
 
     .navbar li{
         text-decoration: none;
+        color: whitesmoke;
         background: darkblue;
         font-size: 12px;
         line-height: 20px;
@@ -1241,7 +1242,7 @@ footer ul li{
     .cart-area i{
         font-size:16px;
         float:left;
-        margin-top:16px;
+        margin-top:12px;
         color:#ffffff;
         margin-left:10px
     }
@@ -1282,6 +1283,7 @@ footer ul li{
         font-size: 10px;
         line-height: 16px;
         padding: 0 8px;
+        color: whitesmoke;
         
     }
 
