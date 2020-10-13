@@ -13,15 +13,15 @@ export class ProductService {
 
   // DEVELOPMENT
 
-  private baseUrl = "http://localhost:8080/api/products"; // hardcoded
+  // private baseUrl = "http://localhost:8080/api/products"; // hardcoded
 
-  private categoryUrl = "http://localhost:8080/api/product-category";
+  // private categoryUrl = "http://localhost:8080/api/product-category";
 
   // PRODUCTION
 
-  // private baseUrl = "https://springboot-angular-ecommerce.herokuapp.com/api/products"; // hardcoded
+  private baseUrl = "https://springboot-angular-ecommerce.herokuapp.com/api/products"; // hardcoded
 
-  // private categoryUrl = "https://springboot-angular-ecommerce.herokuapp.com/api/product-category";
+  private categoryUrl = "https://springboot-angular-ecommerce.herokuapp.com/api/product-category";
 
   constructor(private httpClient: HttpClient) { }
 
