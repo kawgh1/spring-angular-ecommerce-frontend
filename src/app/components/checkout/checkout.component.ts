@@ -162,6 +162,12 @@ export class CheckoutComponent implements OnInit {
 
     console.log("The customer shipping state is " + this.checkoutFormGroup.get('shippingAddress').value.state);
     console.log("The customer shipping country is " + this.checkoutFormGroup.get('shippingAddress').value.country);
+
+    // show "added to cart" message when clicked on product card
+    document.getElementById("alert-purchase").hidden = false;
+    setTimeout(() => {
+      document.getElementById("alert-purchase").hidden = true;
+    }, 3500);
   }
 
 

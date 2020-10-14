@@ -1,6 +1,10 @@
 <div class="main-content">
     <div class="section-content section-content-p30">
 
+
+
+
+
         <h4>{{ currentCategoryName }}</h4>
         <hr>
 
@@ -25,12 +29,22 @@
 
                         <div class="price">{{ tempProduct.unitPrice | currency:'USD' }}</div>
                         <button (click)="addToCart(tempProduct)" class="btn btn-primary btn-sm">Add to cart</button>
+
+                        <!-- item added to cart alert, with dynamically generated id's 
+                            so alert only appears on the product card added to cart -->
+                        <div class="alert alert-success" id="{{ 'alert' + tempProduct.id}}" hidden>
+                            <strong>Added</strong>
+                            to cart!
+                        </div>
+
+
+
                     </div>
 
                 </div>
 
                 <!-- if products empty then display a message-->
-                <div *ngIf="products?.length == 0" class="alert alert-warning col-md-12" role="alert">
+                <div *ngIf=" products?.length==0" class="alert alert-warning col-md-12" role="alert">
                     Sorry! No products found.
                 </div>
 
@@ -69,8 +83,12 @@
                     </div>
 
                 </div>
+
+
             </div>
             <!-- end footer -->
+
+
 
         </div>
     </div>

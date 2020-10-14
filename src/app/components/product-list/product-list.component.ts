@@ -14,6 +14,7 @@ import { CartItem } from 'src/app/common/cart-item';
 })
 export class ProductListComponent implements OnInit {
 
+
   products: Product[] = [];
   currentCategoryId: number = 1;
   previousCategoryId: number = 1;
@@ -198,12 +199,20 @@ export class ProductListComponent implements OnInit {
   // ADD TO CART METHODS
   addToCart(theProduct: Product) {
 
-    console.log(`Adding to cart: ${theProduct.name}, ${theProduct.unitPrice}`);
+
+    // show "added to cart" message when clicked on product card
+    document.getElementById("alert" + theProduct.id).hidden = false;
+    setTimeout(() => {
+      document.getElementById("alert" + theProduct.id).hidden = true;
+    }, 2000);
+
+    //  console.log(`Adding to cart: ${theProduct.name}, ${theProduct.unitPrice}`);
 
     // TODO ... do the real work
     const theCartItem = new CartItem(theProduct);
 
     this.cartService.addToCart(theCartItem);
+
   }
 
 }

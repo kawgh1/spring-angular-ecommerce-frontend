@@ -11,7 +11,7 @@
   <aside class="menu-sidebar d-none d-lg-block">
     <div class="logo">
       <a routerLink="/products">
-        <img src="assets/images/logo.png" style="height: 75px;" alt="techtonics" class="img-responsive">
+        <img src="assets/images/logo.png" style="height: 75px;" alt="tech tonics" class="img-responsive">
       </a>
     </div>
 
@@ -84,14 +84,19 @@
     </header>
     <!-- END HEADER DESKTOP-->
 
+    <!-- Display Product Categories dynamically -->
     <div class="navbar">
       <ul>
-        <li><a class="active" href="https://spring-angular-ecommerce-front.herokuapp.com/category/1/Books">Books</a>
-        </li>
-        <li><a href="https://spring-angular-ecommerce-front.herokuapp.com/category/11/Coffee%20Mugs">Coffee Mugs</a>
-        </li>
-        <li><a href="https://spring-angular-ecommerce-front.herokuapp.com/category/21/Mouse%20Pads">Mouse Pads</a></li>
-        <li><a href="https://spring-angular-ecommerce-front.herokuapp.com/category/31/Luggage%20Tags">Luggage Tags</a>
+        <li *ngFor="let tempProductCategory of productCategories">
+          <!-- replace href with router link -->
+          <!--  <a href="#">Books</a>  -->
+          <a routerLink="/category/{{ tempProductCategory.id }}/{{ tempProductCategory.categoryName }}"
+            routerLinkActive="active-link">
+
+            {{ tempProductCategory.categoryName }}
+
+          </a>
+
         </li>
       </ul>
     </div>

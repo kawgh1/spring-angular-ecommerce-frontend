@@ -150,7 +150,7 @@ aside.menu-sidebar.d-none.d-lg-block.clr{
     right:0;
     left:200px;
     height:75px;
-    z-index:0
+    z-index:10
 }
 
 .header-desktop .section-content{
@@ -545,10 +545,10 @@ input.au-input.au-input-xl{
     margin-left: 5px;
 }
 .product-box{
-    margin: 1rem .75rem;
+    margin: .5rem .5rem;
     width: 15rem;
     border: .5px solid rgb(235, 192, 164);
-    height: 25rem;
+    height: 26.5rem;
     text-align: center;
     box-shadow: 1px 1px 25px 1px rgb(184, 131, 96);
     border-radius: 8px;
@@ -758,6 +758,23 @@ table.table.table-bordered th{
 .detail-img {
     width: 30%;
 }
+
+.alert-success {
+    transform: scale(.6);
+    font-size: 24px;
+    /* position: fixed;
+    left: 50%;
+    /* top: 50vh; 
+    transform: translate(-50%, 0); */
+    
+}
+
+.alert-info {
+    font-size: 36px;
+    width: 250px;
+}
+
+
 /**/
 
 /* 
@@ -1179,6 +1196,12 @@ footer ul li{
         padding: 0 18px;
         
     }
+
+    .navbar a {
+        color: rgb(185, 201, 247);
+    }
+
+
 }
 
 
@@ -1192,6 +1215,13 @@ footer ul li{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+    }
+
+    .form-area h3{
+        font-size: 18px;
+        font-weight: bold;
+        top: -19px;
+        padding:5px 10px;
     }
 
    
@@ -1231,7 +1261,6 @@ footer ul li{
 
     .navbar li{
         text-decoration: none;
-        color: whitesmoke;
         background: darkblue;
         font-size: 12px;
         line-height: 20px;
