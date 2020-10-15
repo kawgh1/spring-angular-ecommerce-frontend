@@ -23,7 +23,7 @@
                             <p style="padding-left: 5%">{{ tempCartItem.name }}</p>
                             <p style="padding-left: 5%">{{ tempCartItem.unitPrice | currency: 'USD' }}</p>
                         </td>
-                        <td>
+                        <td style="padding-bottom: 0;">
                             <div class="items">
 
 
@@ -60,7 +60,7 @@
                                 <br>
                                 <!-- remove button  -->
                                 <button (click)="remove(tempCartItem)" class="btn btn-primary btn-sm mt-2"
-                                    style="font-size: .65rem">remove</button>
+                                    style="font-size: .65rem; background-color: darkblue;">remove</button>
                             </p>
 
 
