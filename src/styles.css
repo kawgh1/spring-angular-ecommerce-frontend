@@ -1244,7 +1244,7 @@ footer ul li{
 
     .price{
         margin:.3rem;
-        font-size:.8rem;
+        font-size:.9rem;
         height: 10%;
         font-weight:700;
         letter-spacing: .1rem;
@@ -1254,7 +1254,7 @@ footer ul li{
     }
     .product-box h1{
         height: 15%;
-        font-size:.8rem;
+        font-size:.9rem;
         border-bottom:1px solid #ccc;
         padding:.2rem;
         font-weight:600;
@@ -1315,7 +1315,7 @@ footer ul li{
     input.au-input.au-input-xl{
         border-radius:0!important;
         margin-right:0;
-        max-width: 150px;
+        max-width: 125px;
         height: 35px;
     }
 
