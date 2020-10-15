@@ -521,9 +521,10 @@ input.au-input.au-input-xl{
 .header-mobile-2.header-mobile .hamburger .hamburger-box .hamburger-inner::after{
     background:#fff
 }
+*/
 .main-content.page-m{
-    padding:10% 15%!important
-} */
+    padding:10% 15%
+} 
 
 /* 
  * ----------------------------
@@ -1289,6 +1290,10 @@ footer ul li{
         
     }
 
+    .form-area {
+        width: 95%;
+    }
+
     .form-area h3{
         font-size: 18px;
         font-weight: bold;
@@ -1301,7 +1306,7 @@ footer ul li{
     .au-btn-submit{
         position:relative;
         right:10px;
-        min-width:65px;
+        min-width:40px;
         font-weight: 600;
         color:#fff;
         border:1px solid #205b8d;
@@ -1315,7 +1320,7 @@ footer ul li{
     input.au-input.au-input-xl{
         border-radius:0!important;
         margin-right:0;
-        max-width: 125px;
+        max-width: 140px;
         height: 35px;
     }
 
@@ -1387,9 +1392,10 @@ footer ul li{
         margin-top: 0px;
     }
 
-    .col button.btn.btn-primary.btn-sm {
+    .col > button.btn.btn-primary.btn-sm {
         padding: 4px;
         height: 19px;
+        font-size: 8px;
         
     } 
 
@@ -1397,6 +1403,9 @@ footer ul li{
         color: white;
     }
 
+        .main-content.page-m{
+        padding:10% 0% 10% 5%
+    }
     
 
 }
