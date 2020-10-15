@@ -167,7 +167,7 @@ export class CheckoutComponent implements OnInit {
     document.getElementById("alert-purchase").hidden = false;
     setTimeout(() => {
       document.getElementById("alert-purchase").hidden = true;
-    }, 3500);
+    }, 10000);
   }
 
 

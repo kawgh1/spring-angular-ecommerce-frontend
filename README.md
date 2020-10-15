@@ -12,7 +12,7 @@ To view the live site hosted on Heroku please visit https://spring-angular-ecomm
 All of the page sections are Angular components that are populated with data (Product, Product Category, State, Country) from a MySQL database through Spring Data REST JPA calls. 
 
 
-### My additions are responsive product display (CSS Grid [Desktop] and Flex [Mobile]), mobile view and development, custom icons and style as well as deployment to heroku and database setup.
+### My additions are responsive product display (CSS Grid), mobile view and development, custom icons and style as well as deployment to heroku and database setup.
 
 
 For the backend I did the heroku deployment including MySQL database set up.

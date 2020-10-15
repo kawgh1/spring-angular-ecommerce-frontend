@@ -99,7 +99,7 @@ a,a:hover{
     -webkit-transition:all .3s ease;
     -o-transition:all .3s ease;
     -moz-transition:all .3s ease;
-    transition:all .3s ease
+    transition:all .3s ease;
 }
 
 /*Layout Css*/
@@ -1057,6 +1057,11 @@ footer ul li{
         -ms-flex-pack:justify;
         justify-content:space-between
     }
+
+    .active-link {
+        font-weight: bold;
+        color: rgb(231, 243, 248);
+      }
 }
 
 
@@ -1198,8 +1203,9 @@ footer ul li{
     }
 
     .navbar a {
-        color: rgb(185, 201, 247);
+        color: rgb(205, 216, 247);
     }
+
 
 
 }
@@ -1208,13 +1214,79 @@ footer ul li{
 @media (max-width:500px){
 
     .product-container {
+
+        background-size: cover;
+  padding: 0;
         /* Grid styles */
   
 
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center; */
+
+  display: grid;
   align-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+    }
+
+    .product-box{
+        margin: 1rem 0;
+        width: 9rem;
+        border: .5px solid rgb(235, 192, 164);
+        height: 16rem;
+        text-align: center;
+        box-shadow: 1px 1px 25px 1px rgb(184, 131, 96);
+        border-radius: 8px; 
+
+     
+    }
+
+    .price{
+        margin:.3rem;
+        font-size:.8rem;
+        height: 10%;
+        font-weight:700;
+        letter-spacing: .1rem;
+        color:#0da8e4;
+        margin: 0.1rem;
+        
+    }
+    .product-box h1{
+        height: 15%;
+        font-size:.8rem;
+        border-bottom:1px solid #ccc;
+        padding:.2rem;
+        font-weight:600;
+        margin-bottom:0px;
+        text-align: center;
+        margin: 0;
+    }
+    .product-box h2{
+        font-size:8px;
+        margin:0;
+        font-weight:500;
+        color:#585858
+    }
+
+    .col-md-3 {
+        margin: 0;
+        padding: 0px 0px;
+    }
+
+    button.btn.btn-primary.btn-sm {
+        
+        font-size: 12px;
+    }
+
+    .alert-success {
+        /* transform: scale(.6); */
+        font-size: 14px;
+        /* position: fixed;
+        left: 50%;
+        /* top: 50vh; 
+        transform: translate(-50%, 0); */
+        
     }
 
     .form-area h3{
@@ -1320,6 +1392,10 @@ footer ul li{
         height: 19px;
         
     } 
+
+    .active-link {
+        color: white;
+    }
 
     
 
