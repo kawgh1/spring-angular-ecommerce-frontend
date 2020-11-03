@@ -1,19 +1,36 @@
 <div class="detail-section">
     <div class="container-fluid">
 
+
+
         <!-- <p style="margin-top: 100px">{{ product.name }}</p>> -->
 
         <img src="{{ product.imageUrl }}" class="detail-img">
 
         <h3>{{ product.name }}</h3>
+        <br>
+        <div class="price" style="font-size: 1.8rem;">{{ product.unitPrice | currency: 'USD' }}</div>
 
-        <div class="price">{{ product.unitPrice | currency: 'USD' }}</div>
 
-        <button (click)="addToCart()" class="btn btn-primary btn-sm">Add to cart</button>
-
-        <hr>
         <h4>Description</h4>
         <p>{{ product.description }}</p>
+
+        <hr>
+
+
+
+
+        <button style="margin-left: 1rem;" (click)="addToCart()" class="btn btn-primary btn-sm">Add to
+            cart</button>
+
+        <!-- item added to cart alert, with dynamically generated id's 
+        so alert only appears on the product card added to cart -->
+        <div style="margin: 0; text-align: center;" class="alert alert-success" id="addToCartAlert" hidden>
+            <strong>Added</strong>
+            to cart!
+        </div>
+
+        <div id="filler" height="100px"><br><br></div>
 
 
         <!-- link back to previous products page  -->

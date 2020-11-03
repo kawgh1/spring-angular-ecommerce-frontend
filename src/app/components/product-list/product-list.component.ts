@@ -116,6 +116,8 @@ export class ProductListComponent implements OnInit {
       this.thePageSize,
       theKeyword).subscribe(this.processResult());
 
+
+
   }
 
 
@@ -178,6 +180,7 @@ export class ProductListComponent implements OnInit {
   // so we're assigning the returned JSON data as the properties for pagination display
   processResult() {
 
+
     return data => {
 
       this.products = data._embedded.products;
@@ -185,7 +188,17 @@ export class ProductListComponent implements OnInit {
       this.thePageSize = data.page.size;
       this.theTotalElements = data.page.totalElements; // defined as totalElements in product.service.ts
 
+      if (this.theTotalElements === 0) {
+
+        // show "no products found" message when search result is empty
+        document.getElementById("alertSearch").hidden = false;
+
+
+
+      }
+
     };
+
   }
 
   updatePageSize(pageSize: number) {

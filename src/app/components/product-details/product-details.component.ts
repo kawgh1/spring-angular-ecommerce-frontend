@@ -61,6 +61,14 @@ export class ProductDetailsComponent implements OnInit {
 
     this.cartService.addToCart(theCartItem);
 
+    // show "added to cart" message when clicked on product card
+    document.getElementById("addToCartAlert").hidden = false;
+    document.getElementById("filler").hidden = true;
+    setTimeout(() => {
+      document.getElementById("addToCartAlert").hidden = true;
+      document.getElementById("filler").hidden = false;
+    }, 2000);
+
   }
 
 }
