@@ -60,6 +60,7 @@ export class ProductService {
 
   // helper method
   private getProducts(searchUrl: string): Observable<Product[]> {
+
     return this.httpClient.get<GetResponseProducts>(searchUrl).pipe(map(response => response._embedded.products));
   }
 

@@ -118,6 +118,7 @@ export class ProductListComponent implements OnInit {
 
 
 
+
   }
 
 
@@ -188,14 +189,24 @@ export class ProductListComponent implements OnInit {
       this.thePageSize = data.page.size;
       this.theTotalElements = data.page.totalElements; // defined as totalElements in product.service.ts
 
-      if (this.theTotalElements === 0) {
+      console.log("products.length :   " + this.products.length);
 
-        // show "no products found" message when search result is empty
-        document.getElementById("alertSearch").hidden = false;
+      // if (this.products.length < 1) {
+      //   if (this.theKeyword !== null) {
+
+      //     // show "no products found" message when search result is empty
+      //     document.getElementById("alertSearch").hidden = false;
+
+
+      //     setTimeout(() => {
+      //       document.getElementById("alertSearch").hidden = true;
+      //     }, 3000);
 
 
 
-      }
+      //   }
+      // }
+
 
     };
 

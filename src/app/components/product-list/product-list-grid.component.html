@@ -39,13 +39,19 @@
 
 
 
+
                     </div>
 
                 </div>
 
                 <!-- if products empty then display a message-->
-                <div class="alert alert-warning col-md-12" id="alertSearch" role="alert" hidden>
+                <!-- <div class="alert alert-warning col-md-12" id="alertSearch" role="alert" hidden>
                     Sorry! No products found!
+                </div> -->
+
+
+                <div *ngIf=" products?.length===0" class="alert alert-warning col-md-12" role="alert">
+                    Sorry! No products found.
                 </div>
 
             </div>
