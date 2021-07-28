@@ -613,17 +613,24 @@ input.au-input.au-input-xl{
     position:relative;
     margin-bottom:45px;
     padding:50px 20px;
-    border:3px solid #ccc
+    border:3px solid #ccc;
+    border-radius: 5px
 }
 .form-area h3{
     position:absolute;
+    color: #5f5f63;
+    /* text-shadow: 1px 1px #818181; */
+    font-size: 20px;
     top:-26px;
     left:13px;
-    background:#e5e5e5;
+    background:#e4e4e4;
     padding:10px 20px;
     font-weight:500;
     z-index:23;
-    display:inline-block
+    display:inline-block;
+    border: 2px solid #939aa0;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px 1px grey;
 }
 .input-space{
     margin-bottom:20px
