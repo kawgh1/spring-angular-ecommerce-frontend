@@ -25,3 +25,20 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+### 8/1/2021 Update
+
+Added Form Validation in the Checkout Form using Angular [FormControl](https://angular.io/api/forms/FormControl)
+    - Only display validation errors if the user has interacted with the form - if the form is 'dirty' (user changed data) or 'touched' (user selected field)
+    - When the field loses focus, the control is marked as "touched"
+    - Ex)
+
+        - <label>First Name</label>
+        - <input formControlName="firstName" type="text">
+        - <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger">
+
+            - <div *ngIf="firstName.errors.required"> First Name is required </div>
+
+            - <div *ngIf="firstName.errors.minLength"> First Name must be at least 2 characters long </div>
+
+        - </div>
