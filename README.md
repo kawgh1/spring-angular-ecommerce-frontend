@@ -33,6 +33,8 @@ Added Form Validation in the Checkout Form using Angular [FormControl](https://a
     - When the field loses focus, the control is marked as "touched"
     - Ex)
 
+        - File: checkout.component.html
+
         <label>First Name</label>
         <input formControlName="firstName" type="text">
         
@@ -47,3 +49,19 @@ Added Form Validation in the Checkout Form using Angular [FormControl](https://a
             </div>
 
         </div>
+
+        ...
+
+        - File: checkout.component.ts
+
+        onSubmit() {
+            console.log("Handling the submit button");
+            ...
+            if (this.checkoutFormGroup.invalid) {
+                this.checkoutFormGroup.markAllAsTouched();
+            }
+
+            console.log("CheckoutFormGroup is valid: " + this.checkoutFormGroup.valid);
+        }
+
+        - Added custom form validator for 'notOnlyWhiteSpace' in app/components/validators/tech-tonic-validators.ts

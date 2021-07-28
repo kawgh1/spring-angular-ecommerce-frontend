@@ -19,7 +19,8 @@
                                 <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
                                     class="alert alert-danger mt-1">
 
-                                    <div *ngIf="firstName.errors.required">
+                                    <!-- notOnlyWhiteSpace is a custom validator -->
+                                    <div *ngIf="firstName.errors.required || firstName.errors.notOnlyWhiteSpace">
                                         First Name is required
                                     </div>
 
@@ -42,7 +43,7 @@
                                 <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
                                     class="alert alert-danger mt-1">
 
-                                    <div *ngIf="lastName.errors.required">
+                                    <div *ngIf="lastName.errors.required || lastName.errors.notOnlyWhiteSpace">
                                         Last Name is required
                                     </div>
 

@@ -4,6 +4,7 @@ import { ShopFormService } from 'src/app/services/shop-form.service';
 import { Country } from 'src/app/common/country';
 import { State } from 'src/app/common/state';
 import { CartService } from 'src/app/services/cart.service';
+import { TechTonicValidators } from 'src/app/validators/tech-tonic-validators'
 
 @Component({
   selector: 'app-checkout',
@@ -46,11 +47,12 @@ export class CheckoutComponent implements OnInit {
       customer: this.formBuilder.group({
 
         // firstName: [''],
-        firstName: new FormControl('', [Validators.required, Validators.minLength(2)]),
+        firstName: new FormControl('',
+          [Validators.required, Validators.minLength(2), TechTonicValidators.notOnlyWhiteSpace]),
         // lastName: [''],
-        lastName: new FormControl('', [Validators.required, Validators.minLength(2)]),
+        lastName: new FormControl('', [Validators.required, Validators.minLength(2), TechTonicValidators.notOnlyWhiteSpace]),
         // email: ['']
-        email: new FormControl('', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')])
+        email: new FormControl('', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'), TechTonicValidators.notOnlyWhiteSpace])
       }),
 
       shippingAddress: this.formBuilder.group({
@@ -155,7 +157,11 @@ export class CheckoutComponent implements OnInit {
 
     // logging
 
-    console.log("handling the submit button");
+    console.log("Handling the submit button");
+
+    if (this.checkoutFormGroup.invalid) {
+      this.checkoutFormGroup.markAllAsTouched();
+    }
     console.log(this.checkoutFormGroup.get('customer').value);
 
     console.log("The customer email address is " + this.checkoutFormGroup.get('customer').value.email);
@@ -164,10 +170,10 @@ export class CheckoutComponent implements OnInit {
     console.log("The customer shipping country is " + this.checkoutFormGroup.get('shippingAddress').value.country);
 
     // show "added to cart" message when clicked on product card
-    document.getElementById("alert-purchase").hidden = false;
-    setTimeout(() => {
-      document.getElementById("alert-purchase").hidden = true;
-    }, 10000);
+    // document.getElementById("alert-purchase").hidden = false;
+    // setTimeout(() => {
+    //   document.getElementById("alert-purchase").hidden = true;
+    // }, 10000);
   }
 
 
