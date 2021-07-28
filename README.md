@@ -28,9 +28,12 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ### 8/1/2021 Update
 
-Added Form Validation in the Checkout Form using Angular [FormControl](https://angular.io/api/forms/FormControl)
+- Added Form Validation in the Checkout Form using Angular [FormControl](https://angular.io/api/forms/FormControl)
+
     - Only display validation errors if the user has interacted with the form - if the form is 'dirty' (user changed data) or 'touched' (user selected field)
+
     - When the field loses focus, the control is marked as "touched"
+
     - Ex)
 
         - File: checkout.component.html
@@ -64,4 +67,4 @@ Added Form Validation in the Checkout Form using Angular [FormControl](https://a
             console.log("CheckoutFormGroup is valid: " + this.checkoutFormGroup.valid);
         }
 
-Added custom form validator for 'notOnlyWhiteSpace' in app/components/validators/tech-tonic-validators.ts
+- Added custom form validator for 'notOnlyWhiteSpace' in app/components/validators/tech-tonic-validators.ts
