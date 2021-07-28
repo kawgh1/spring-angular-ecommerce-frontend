@@ -34,7 +34,8 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
     - When the field loses focus, the control is marked as "touched"
 
-    - Ex)
+
+    Ex)
 
         File: checkout.component.html
 
