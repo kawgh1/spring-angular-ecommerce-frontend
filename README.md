@@ -33,12 +33,17 @@ Added Form Validation in the Checkout Form using Angular [FormControl](https://a
     - When the field loses focus, the control is marked as "touched"
     - Ex)
 
-        - <label>First Name</label>
-        - <input formControlName="firstName" type="text">
-        - <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger">
+        <label>First Name</label>
+        <input formControlName="firstName" type="text">
+        
+        <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger">
 
-            - <div *ngIf="firstName.errors.required"> First Name is required </div>
+            <div *ngIf="firstName.errors.required"> 
+                First Name is required 
+            </div>
 
-            - <div *ngIf="firstName.errors.minLength"> First Name must be at least 2 characters long </div>
+            <div *ngIf="firstName.errors.minLength"> 
+                First Name must be at least 2 characters long 
+            </div>
 
-        - </div>
+        </div>
