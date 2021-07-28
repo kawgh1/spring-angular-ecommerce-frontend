@@ -64,4 +64,4 @@ Added Form Validation in the Checkout Form using Angular [FormControl](https://a
             console.log("CheckoutFormGroup is valid: " + this.checkoutFormGroup.valid);
         }
 
-        - Added custom form validator for 'notOnlyWhiteSpace' in app/components/validators/tech-tonic-validators.ts
+Added custom form validator for 'notOnlyWhiteSpace' in app/components/validators/tech-tonic-validators.ts
