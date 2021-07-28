@@ -41,15 +41,21 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
         <label>First Name</label>
         <input formControlName="firstName" type="text">
-        
-        <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger">
 
-            <div *ngIf="firstName.errors.required"> 
-                First Name is required 
+        <!-- validator method dirty=did user change field value, touched=did user change fields -->
+
+        <!-- if text field is invalid, dirty or touched, then display div alert box with message to correct field -->
+
+        <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
+            class="alert alert-danger mt-1">
+
+            <!-- notOnlyWhiteSpace is a custom validator -->
+            <div *ngIf="firstName.errors.required || firstName.errors.notOnlyWhiteSpace">
+                First Name is required
             </div>
 
-            <div *ngIf="firstName.errors.minLength"> 
-                First Name must be at least 2 characters long 
+            <div *ngIf="firstName.errors.minlength">
+                First Name must be at least 2 characters
             </div>
 
         </div>
