@@ -36,7 +36,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
     - Ex)
 
-        - File: checkout.component.html
+        File: checkout.component.html
 
         <label>First Name</label>
         <input formControlName="firstName" type="text">
@@ -55,7 +55,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
         ...
 
-        - File: checkout.component.ts
+        File: checkout.component.ts
 
         onSubmit() {
             console.log("Handling the submit button");
