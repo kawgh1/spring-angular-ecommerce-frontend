@@ -83,7 +83,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
         - **CheckoutController**
         - **CheckoutService**
 
-    - We'll use a Data Transfer Object (DTO) called 'Purchase' that will store the data for each order
+    - We'll use a **Data Transfer Object (DTO)** called 'Purchase' that will store the data for each order
         - PurchaseDTO
             - Customer
             - Shipping Address
@@ -94,22 +94,22 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
         - And use this DTO to transfer the data between the Angular front-end and the Spring Boot back-end
     
-    - REST API
+    - **REST API**
         - Support the POST method for checkout purchase
         - Request body contains JSON for PurchaseDTO
-            - **POST**   /api/checkout/purchase     *new purchase order*
-    - ***Why not user Spring Data REST??***
+            - **POST** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  /api/checkout/purchase &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    *new purchase order*
+    - ***Why not use Spring Data REST??***
 
-    - Spring Data REST is great for basic CRUD operations
-        - We are currently useing ti for product catalog to receive images and information for each product to display
+        - ### Spring Data REST is great for basic CRUD operations
+            - We are currently using ti for product catalog to receive images and information for each product to display
     
-    - However, Spring Data ReST is **NOT** the best for processing operations that involve ***custom business logic***
-        - Generate a unique tracking number
-        - Save order in database
-        - Other custom business logic...
+        - However, Spring Data ReST is **NOT** the best for processing operations that involve ***custom business logic***
+            - Generate a unique tracking number
+            - Save order in database
+            - Other custom business logic...
 
-    - Spring Data REST is very limited in terms of customization
-        - For custom business logic and processing, create a custom controller and service on the backend
+        - Spring Data REST is very limited in terms of customization
+            - For custom business logic and processing, create a custom controller and service on the backend
 
 ![Database Diagram](https://github.com/kawgh1/spring-angular-ecommerce-frontend/blob/master/src/assets/images/DatabaseDiagram.png)
 
