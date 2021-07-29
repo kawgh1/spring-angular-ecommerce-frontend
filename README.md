@@ -93,8 +93,21 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 3. **Cart Service** publishes events to all subscribers
 4. **CartStatusComponent** receives event and updates display for total price and quantity
 
+[Subject Without Replay Diagram](https://github.com/kawgh1/spring-angular-ecommerce-frontend/blob/master/src/assets/images/SubjectWithoutReplayDiagram.png)
+- Publish / Subscribe
+    - Similar approach for **CheckoutComponent** ... almost
+    - **CheckoutComponent** will subscribe to events from **CartService**
+    - However, since **CheckoutComponent** is instantiated later in the application
+        - Thus, it will miss out on previous messages
+    - As a result, **CheckoutComponent** cart totals will erroneously show as
+        - 0 for total quantity
+        - 0.00 for total price
+
+[ReplaySubject Diagram](https://github.com/kawgh1/spring-angular-ecommerce-frontend/blob/master/src/assets/images/ReplaySubjectDiagram.png)
 - Use of ReplaySubject
     - Subject is used to send events to subscribers
     - ReplaySubject is a subclass of Subject
         - Will also "replay events" for new subscribers who join later on
         - Keeps a buffer of previous events ... and send to **new subscribers**
+
+[More info on ReplaySubject](https://rxjs-dev.firebaseapp.com/guide/subject#replaysubject)
