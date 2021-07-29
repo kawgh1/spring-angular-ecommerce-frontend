@@ -85,11 +85,11 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
         - totalPrice
         - totalQuantity
 
-    (**CartService Diagram**)[https://github.com/kawgh1/spring-angular-ecommerce-frontend/blob/master/src/assets/images/CartServiceComponentDiagram.png]
-    1). CartStatusComponent subscribes to CartService for events
-    2). ProductListComponent sends data (items added to cart) to Cart Service to **publish** event
-    3). Cart Service publishes events to all subscribers
-    4). CartStatusComponent receives event and updates display for total price and quantity
+    **(CartService Diagram)[https://github.com/kawgh1/spring-angular-ecommerce-frontend/blob/master/src/assets/images/CartServiceComponentDiagram.png]**
+    - 1). CartStatusComponent subscribes to CartService for events
+    - 2). ProductListComponent sends data (items added to cart) to Cart Service to **publish** event
+    - 3). Cart Service publishes events to all subscribers
+    - 4). CartStatusComponent receives event and updates display for total price and quantity
 
 - Use of ReplaySubject
     - Subject is used to send events to subscribers
