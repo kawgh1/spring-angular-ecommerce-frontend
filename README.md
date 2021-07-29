@@ -94,35 +94,35 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
         - JSON object<br/>
             {<br/>
-                &nbsp;"customer":{<br/>
-                    &nbsp;"firstName":"Nancy",<br/>
-                    &nbsp;&nbsp;"lastName":"Smith",<br/>
-                    &nbsp;&nbsp;"email":"nancy.smith@techtonics.com"<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;"customer":{<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"firstName":"Nancy",<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lastName":"Smith",<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"email":"nancy.smith@techtonics.com"<br/>
                 },<br/>
-                &nbsp;"shippingAddress":{<br/>
-                    &nbsp;&nbsp;...<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;"shippingAddress":{<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br/>
                 },<br/>
-                &nbsp;"billingAddress":{<br/>
-                    &nbsp;&nbsp;...<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;"billingAddress":{<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br/>
                 },<br/>
-                &nbsp;"order":{<br/>
-                    &nbsp;&nbsp;"totalPrice":36.98,<br/>
-                    &nbsp;&nbsp;"totalQuantity":2<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;"order":{<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"totalPrice":36.98,<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"totalQuantity":2<br/>
                 },<br/>
-                &nbsp;"orderItems":[<br/>
-                    &nbsp;&nbsp;{<br/>
-                        &nbsp;&nbsp;&nbsp;"imageUrl":"assets/images/products/coffeemugs/coffeemug-luv2code-1000.png",<br/>
-                        &nbsp;&nbsp;&nbsp;"quantity":1,<br/>
-                        &nbsp;&nbsp;&nbsp;"unitPrice":18.99,<br/>
-                        &nbsp;&nbsp;&nbsp;"productId":26<br/>
-                    &nbsp;&nbsp;},<br/>
-                    &nbsp;&nbsp;{<br/>
-                        &nbsp;&nbsp;&nbsp;"imageUrl":"assets/images/products/mousepads/mousepad-luv2code-1000.png",<br/>
-                        &nbsp;&nbsp;&nbsp;"quantity":2,<br/>
-                        &nbsp;&nbsp;&nbsp;"unitPrice":17.99,<br/>
-                        &nbsp;&nbsp;&nbsp;"productId":51<br/>
-                    &nbsp;&nbsp;}<br/>
-                &nbsp;]<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;"orderItems":[<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"imageUrl":"assets/images/products/coffeemugs/coffeemug-luv2code-1000.png",<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"quantity":1,<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"unitPrice":18.99,<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"productId":26<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"imageUrl":"assets/images/products/mousepads/mousepad-luv2code-1000.png",<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"quantity":2,<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"unitPrice":17.99,<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"productId":51<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;]<br/>
             }<br/>
 
         - And use this DTO (using **JSON** object) to transfer the data between the Angular front-end and the Spring Boot back-end
