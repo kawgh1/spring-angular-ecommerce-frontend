@@ -77,7 +77,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
         }
 
 - Added custom form validator for 'notOnlyWhiteSpace' in app/components/validators/tech-tonic-validators.ts
-- ### Save the Order 
+- ## Save the Order 
     - Send the order from the Angular frontend  to the Spring Boot backend through the REST API and store it in the database
     - For saving the order, in the Spring Boot backend we will create a custom Controller and Service
         - **CheckoutController**
@@ -89,10 +89,43 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
             - Shipping Address
             - Billing Address
             - Order
-            - OrderItem[]
+            - OrderItems[]
             - ...
 
-        - And use this DTO to transfer the data between the Angular front-end and the Spring Boot back-end
+        - JSON object
+            {
+                "customer":{
+                    "firstName":"Nancy",
+                    "lastName":"Smith",
+                    "email":"nancy.smith@techtonics.com"
+                },
+                "shippingAddress":{
+                    ...
+                },
+                "billingAddress":{
+                    ...
+                },
+                "order":{
+                    "totalPrice":36.98,
+                    "totalQuantity":2
+                },
+                "orderItems":[
+                    {
+                        "imageUrl":"assets/images/products/coffeemugs/coffeemug-luv2code-1000.png",
+                        "quantity":1,
+                        "unitPrice":18.99,
+                        "productId":26
+                    },
+                    {
+                        "imageUrl":"assets/images/products/mousepads/mousepad-luv2code-1000.png",
+                        "quantity":2,
+                        "unitPrice":17.99,
+                        "productId":51
+                    }
+                ]
+            }
+
+        - And use this DTO (using **JSON** object) to transfer the data between the Angular front-end and the Spring Boot back-end
     
     - **REST API**
         - Support the POST method for checkout purchase
@@ -102,9 +135,9 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
     - ## ***Why not use Spring Data REST??***
 
         - ### Spring Data REST is great for basic CRUD operations
-            - We are currently using ti for product catalog to receive images and information for each product to display
+            - We are currently using it for our product catalog to receive images and information for each product to display
     
-        - However, Spring Data ReST is **NOT** the best for processing operations that involve ***custom business logic***
+        - However, Spring Data REST is **NOT** the best for processing operations that involve ***custom business logic***
             - Generate a unique tracking number
             - Save order in database
             - Other custom business logic...
