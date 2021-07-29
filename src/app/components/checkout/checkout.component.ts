@@ -42,6 +42,7 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void {
 
+
     this.checkoutFormGroup = this.formBuilder.group({
 
       customer: this.formBuilder.group({
@@ -185,14 +186,18 @@ export class CheckoutComponent implements OnInit {
 
   reviewCartDetails() {
 
+    // subscribe to cartService.totalQuantity
     this.cartService.totalQuantity.subscribe(
 
+      // assign that value to this component's totalQuantity variable
       totalQuantity => this.totalQuantity = totalQuantity
 
     );
 
+    // subscribe to cartService.totalPrice
     this.cartService.totalPrice.subscribe(
 
+      // assign that value to this component's totalPrice variable
       totalPrice => this.totalPrice = totalPrice
 
     );

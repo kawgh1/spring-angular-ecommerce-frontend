@@ -77,9 +77,29 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
         }
 
 - Added custom form validator for 'notOnlyWhiteSpace' in app/components/validators/tech-tonic-validators.ts
+- Save the Order - Send the order from the Angular frontend  to the Spring Boot backend through the REST API and store it in the database
+    - For saving the order, in the Spring Boot backend we will create a custom Controller and Service
+        - **CheckoutController**
+        - **CheckoutService**
+    
+    - ***Why not user Spring Data REST??***
+
+    - Spring Data REST is great for basic CRUD operations
+        - We are currently useing ti for product catalog to receive images and information for each product to display
+    
+    - However, Spring Data ReST is **NOT** the best for processing operations that involve ***custom business logic***
+        - Generate a unique tracking number
+        - Save order in database
+        - Other custom business logic...
+
+    - Spring Data REST is very limited in terms of customization
+        - For custom business logic and processing, create a custom controller and service on the backend
+
+![Database Diagram](https://github.com/kawgh1/spring-angular-ecommerce-frontend/blob/master/src/assets/images/DatabaseDiagram.png)
 
 
-- Cart Service - Publishing messages/events
+
+### Cart Service - Publishing messages/events
 
 - Recall that we send messages/events to other components within our application
 - For Example, CartStatusComponent will **subscribe** to the CartService
@@ -111,3 +131,17 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
         - Keeps a buffer of previous events ... and send to **new subscribers**
 
 [More info on ReplaySubject](https://rxjs-dev.firebaseapp.com/guide/subject#replaysubject)
+
+
+#### BehaviorSubject
+- **BehaviorSubject** is a subclass of Subject
+    - Has a notion of "current value" or "last value"
+    - **Stores the latest message / event only** ... and sends to new subscribers
+        - *Sorry I'm late to the meeting - what's the latest cart total?*
+        - Instead of, what's every message/event since the meeting started?
+
+    - From the Docs
+        - **BehaviorSubjects** are useful for representing "values over time"
+        - For example, an event stream of birthdays is a **Subject**, but the stream of a person's age would be a **BehaviorSubject**
+
+

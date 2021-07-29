@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CartItem } from '../common/cart-item';
-import { Subject, ReplaySubject } from 'rxjs';
+import { Subject, ReplaySubject, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +10,18 @@ export class CartService {
 
   cartItems: CartItem[];
 
-  totalPrice: ReplaySubject<number> = new ReplaySubject<number>();
-  totalQuantity: ReplaySubject<number> = new ReplaySubject<number>();
+  // A **ReplaySubject** will send out all previous events or messages
+  // In this case, every time totalPrice or totalQuantity changes - which will happen with shopping -
+  // a new event message is sent to subscribers
+
+  // totalPrice: ReplaySubject<number> = new ReplaySubject<number>();
+  // totalQuantity: ReplaySubject<number> = new ReplaySubject<number>();
+
+  // But we just want the last or the latest value - what's the current totalPrice and totalQuantity?
+  // I don't care about the 5 values before now
+  // So I use **BehaviorSubject** and set initial value to 0
+  totalPrice: Subject<number> = new BehaviorSubject<number>(0);
+  totalQuantity: Subject<number> = new BehaviorSubject<number>(0);
 
   constructor() {
 
