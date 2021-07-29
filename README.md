@@ -75,3 +75,23 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
         }
 
 - Added custom form validator for 'notOnlyWhiteSpace' in app/components/validators/tech-tonic-validators.ts
+
+
+- Cart Service - Publishing messages/events
+
+- Recall that we send messages/events to other components within our application
+- For Example, CartStatusComponent will *subscribe* to the CartService
+    - CartService will *publish* messages for:
+        - totalPrice
+        - totalQuantity
+
+    1. CartStatusComponent subscribes to CartService for events
+    2. ProductListComponent sends data (items added to cart) to Cart Service to *publish* event
+    3. Cart Service publishes events to all subscribers
+    4. CartStatusComponent receives event and updates display for total price and quantity
+    
+- Use of ReplaySubject
+    - Subject is used to send events to subscribers
+    - ReplaySubject is a subclass of Subject
+        - Will also "replay events" for new subscribers who join later on
+        - Keeps a buffer of previous events ... and send to *new subscribers*
