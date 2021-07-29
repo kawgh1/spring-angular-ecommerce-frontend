@@ -94,35 +94,35 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
         - JSON object<br/>
             {<br/>
-                "customer":{<br/>
-                    "firstName":"Nancy",<br/>
-                    "lastName":"Smith",<br/>
-                    "email":"nancy.smith@techtonics.com"<br/>
+                &nbsp;"customer":{<br/>
+                    &nbsp;"firstName":"Nancy",<br/>
+                    &nbsp;&nbsp;"lastName":"Smith",<br/>
+                    &nbsp;&nbsp;"email":"nancy.smith@techtonics.com"<br/>
                 },<br/>
-                "shippingAddress":{<br/>
-                    ...<br/>
+                &nbsp;"shippingAddress":{<br/>
+                    &nbsp;&nbsp;...<br/>
                 },<br/>
-                "billingAddress":{<br/>
-                    ...<br/>
+                &nbsp;"billingAddress":{<br/>
+                    &nbsp;&nbsp;...<br/>
                 },<br/>
-                "order":{<br/>
-                    "totalPrice":36.98,<br/>
-                    "totalQuantity":2<br/>
+                &nbsp;"order":{<br/>
+                    &nbsp;&nbsp;"totalPrice":36.98,<br/>
+                    &nbsp;&nbsp;"totalQuantity":2<br/>
                 },<br/>
-                "orderItems":[<br/>
-                    {<br/>
-                        "imageUrl":"assets/images/products/coffeemugs/coffeemug-luv2code-1000.png",<br/>
-                        "quantity":1,<br/>
-                        "unitPrice":18.99,<br/>
-                        "productId":26<br/>
-                    },<br/>
-                    {<br/>
-                        "imageUrl":"assets/images/products/mousepads/mousepad-luv2code-1000.png",<br/>
-                        "quantity":2,<br/>
-                        "unitPrice":17.99,<br/>
-                        "productId":51<br/>
-                    }<br/>
-                ]<br/>
+                &nbsp;"orderItems":[<br/>
+                    &nbsp;&nbsp;{<br/>
+                        &nbsp;&nbsp;&nbsp;"imageUrl":"assets/images/products/coffeemugs/coffeemug-luv2code-1000.png",<br/>
+                        &nbsp;&nbsp;&nbsp;"quantity":1,<br/>
+                        &nbsp;&nbsp;&nbsp;"unitPrice":18.99,<br/>
+                        &nbsp;&nbsp;&nbsp;"productId":26<br/>
+                    &nbsp;&nbsp;},<br/>
+                    &nbsp;&nbsp;{<br/>
+                        &nbsp;&nbsp;&nbsp;"imageUrl":"assets/images/products/mousepads/mousepad-luv2code-1000.png",<br/>
+                        &nbsp;&nbsp;&nbsp;"quantity":2,<br/>
+                        &nbsp;&nbsp;&nbsp;"unitPrice":17.99,<br/>
+                        &nbsp;&nbsp;&nbsp;"productId":51<br/>
+                    &nbsp;&nbsp;}<br/>
+                &nbsp;]<br/>
             }<br/>
 
         - And use this DTO (using **JSON** object) to transfer the data between the Angular front-end and the Spring Boot back-end
