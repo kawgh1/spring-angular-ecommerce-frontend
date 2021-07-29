@@ -77,11 +77,27 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
         }
 
 - Added custom form validator for 'notOnlyWhiteSpace' in app/components/validators/tech-tonic-validators.ts
-- Save the Order - Send the order from the Angular frontend  to the Spring Boot backend through the REST API and store it in the database
+### Save the Order 
+    - Send the order from the Angular frontend  to the Spring Boot backend through the REST API and store it in the database
     - For saving the order, in the Spring Boot backend we will create a custom Controller and Service
         - **CheckoutController**
         - **CheckoutService**
+
+    - We'll use a Data Transfer Object (DTO) called 'Purchase' that will store the data for each order
+        - PurchaseDTO
+            - Customer
+            - Shipping Address
+            - Billing Address
+            - Order
+            - OrderItem[]
+            - ...
+
+        - And use this DTO to transfer the data between the Angular front-end and the Spring Boot back-end
     
+    - REST API
+        - Support the POST method for checkout purchase
+        - Request body contains JSON for PurchaseDTO
+            - **POST**   /api/checkout/purchase     *new purchase order*
     - ***Why not user Spring Data REST??***
 
     - Spring Data REST is great for basic CRUD operations
