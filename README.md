@@ -98,7 +98,8 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
         - Support the POST method for checkout purchase
         - Request body contains JSON for PurchaseDTO
             - **POST** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  /api/checkout/purchase &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    *new purchase order*
-    - ***Why not use Spring Data REST??***
+    
+    - ## ***Why not use Spring Data REST??***
 
         - ### Spring Data REST is great for basic CRUD operations
             - We are currently using ti for product catalog to receive images and information for each product to display
