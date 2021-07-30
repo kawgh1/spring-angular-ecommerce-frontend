@@ -78,6 +78,126 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 - Added custom form validator for 'notOnlyWhiteSpace' in app/components/validators/tech-tonic-validators.ts
 
+{
+   "customer":{
+      "firstName":"afasa",
+      "lastName":"afasa",
+      "email":"afasa@test.com"
+   },
+   "shippingAddress":{
+      "street":"afasa",
+      "city":"afasa",
+      "state":"Alberta",
+      "country":"Canada",
+      "zipCode":"afasa"
+   },
+   "billingAddress":{
+      "street":"fsfsf",
+      "city":"sfdsf",
+      "state":"Acre",
+      "country":"Brazil",
+      "zipCode":"19111"
+   },
+   "order":{
+      "totalPrice":36.98,
+      "totalQuantity":2
+   },
+   "orderItems":[
+      {
+         "imageUrl":"assets/images/products/coffeemugs/coffeemug-luv2code-1000.png",
+         "quantity":1,
+         "unitPrice":18.99,
+         "productId":26
+      },
+      {
+         "imageUrl":"assets/images/products/mousepads/mousepad-luv2code-1000.png",
+         "quantity":1,
+         "unitPrice":17.99,
+         "productId":51
+      }
+   ]
+}
+
+- ## Save the Order 
+    - Send the order from the Angular frontend  to the Spring Boot backend through the REST API and store it in the database
+    - For saving the order, in the Spring Boot backend we will create a custom Controller and Service
+        - **CheckoutController**
+        - **CheckoutService**
+
+    - We'll use a **Data Transfer Object (DTO)** called 'Purchase' that will store the data for each order
+        - PurchaseDTO
+            - Customer
+            - Shipping Address
+            - Billing Address
+            - Order
+            - OrderItems[]
+            - ...
+
+        - JSON object<br/>
+            {<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;**"customer"**:{<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**"firstName"**:"Nancy",<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**"lastName"**:"Smith",<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**"email"**:"nancy.smith@techtonics.com"<br/>
+                },<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;**"shippingAddress"**:{<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**...**<br/>
+                },<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;**"billingAddress"**:{<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**...**<br/>
+                },<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;**"order"**:{<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**"totalPrice"**:36.98,<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**"totalQuantity"**:2<br/>
+                },<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;**"orderItems"**:[<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**"imageUrl"**:"assets/images/products/coffeemugs/coffeemug-luv2code-1000.png",<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**"quantity"**:1,<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**"unitPrice"**:18.99,<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**"productId"**:26<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**"imageUrl"**:"assets/images/products/mousepads/mousepad-luv2code-1000.png",<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**"quantity"**:2,<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**"unitPrice"**:17.99,<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**"productId"**:51<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;]<br/>
+            }<br/>
+
+        - And use this DTO (using **JSON** object) to transfer the data between the Angular front-end and the Spring Boot back-end
+    
+    - **REST API**
+        - Support the POST method for checkout purchase
+        - Request body contains JSON for PurchaseDTO
+            - **POST** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  /api/checkout/purchase &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    *new purchase order*
+    
+    - ## ***Why not use Spring Data REST??***
+
+        - ### Spring Data REST is great for basic CRUD operations
+            - We are currently using it for our product catalog to receive images and information for each product to display
+    
+        - However, Spring Data REST is **NOT** the best for processing operations that involve ***custom business logic***
+            - Generate a unique tracking number
+            - Save order in database
+            - Other custom business logic...
+
+        - Spring Data REST is very limited in terms of customization
+            - For custom business logic and processing, create a custom controller and service on the backend
+
+![Database Diagram](https://github.com/kawgh1/spring-angular-ecommerce-frontend/blob/master/src/assets/images/DatabaseDiagram.png)
+
+
+### Save the Order - Development Process
+- Development Process for saving the customer order from the Angular front end to the Spring Boot back end
+1. Create common classes
+    - Customer, Order, OrderItem, Address, Purchase
+2. Create CheckoutService
+    - Make REST API call to Spring Boot backend
+3. Update CheckoutComponent
+    - Inject CheckoutService and Router
+    - Update onSubmit() method to collect form data, call CheckoutService
 
 ### Cart Service - Publishing messages/events
 
