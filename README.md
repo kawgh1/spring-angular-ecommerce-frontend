@@ -160,97 +160,103 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
     - Update onSubmit() method to collect form data, call CheckoutService
 
 
-    File: checkout.component.ts
-      onSubmit() {
+Purchase method when user clicks "Submit" order on checkout screen
 
-    // logging
+    Ex)
+        File: checkout.component.ts
+        
+        ...
+        
+        onSubmit() {
 
-    console.log("Handling the submit button");
+            // logging
 
-    if (this.checkoutFormGroup.invalid) {
-      this.checkoutFormGroup.markAllAsTouched();
-      return;
-    }
-    
-    // set up order
-    // new order instance
-    let order = new Order();
-    order.totalPrice = this.totalPrice;
-    order.totalQuantity = this.totalQuantity;
+            console.log("Handling the submit button");
 
-    // get cart items
-    const cartItems = this.cartService.cartItems;
+            if (this.checkoutFormGroup.invalid) {
+            this.checkoutFormGroup.markAllAsTouched();
+            return;
+            }
+            
+            // set up order
+            // new order instance
+            let order = new Order();
+            order.totalPrice = this.totalPrice;
+            order.totalQuantity = this.totalQuantity;
 
-    // create orderItems from cartItems
-    // - long way - for loop
-    // let orderItems: OrderItem[] = [];
-    // for (let i = 0; i < cartItems.length; i++) {
-    //   orderItems[i] = new OrderItem(cartItems[i]);
-    // }
+            // get cart items
+            const cartItems = this.cartService.cartItems;
 
-    // - short way - mapping
-    let orderItemsShort: OrderItem[] = cartItems.map(tempCartItem => new OrderItem(tempCartItem));
+            // create orderItems from cartItems
+            // - long way - for loop
+            // let orderItems: OrderItem[] = [];
+            // for (let i = 0; i < cartItems.length; i++) {
+            //   orderItems[i] = new OrderItem(cartItems[i]);
+            // }
 
-    // set up purchase object
-    let purchase = new Purchase();
+            // - short way - mapping
+            let orderItemsShort: OrderItem[] = cartItems.map(tempCartItem => new OrderItem(tempCartItem));
 
-    // populate purchase - customer
-    purchase.customer = this.checkoutFormGroup.controls['customer'].value;
+            // set up purchase object
+            let purchase = new Purchase();
 
-
-    // populate purchase - shipping address
-    purchase.shippingAddress = this.checkoutFormGroup.controls['shippingAddress'].value;
-    const shippingState: State = JSON.parse(JSON.stringify(purchase.shippingAddress.state))
-    const shippingCountry: Country = JSON.parse(JSON.stringify(purchase.shippingAddress.country))
-    purchase.shippingAddress.state = shippingState.name;
-    purchase.shippingAddress.country = shippingCountry.name;
-
-    // populate purchase - billing address
-    purchase.billingAddress = this.checkoutFormGroup.controls['billingAddress'].value;
-    const billingState: State = JSON.parse(JSON.stringify(purchase.billingAddress.state))
-    const billingCountry: Country = JSON.parse(JSON.stringify(purchase.billingAddress.country))
-    purchase.billingAddress.state = billingState.name;
-    purchase.billingAddress.country = billingCountry.name;
-
-    // populate purchase - order and orderItems
-    purchase.order = order;
-    purchase.orderItems = orderItemsShort;
+            // populate purchase - customer
+            purchase.customer = this.checkoutFormGroup.controls['customer'].value;
 
 
-    // call REST API via the CheckoutService
-    this.checkoutService.placeOrder(purchase).subscribe({
-      // next is the success/ happy path
-      next: response => {
-        // here we are generating an alert that is grabbing the newly created tracking number from the Spring backend through JSON
-        alert(`Your order has been received. \nOrder tracking number: ${response.orderTrackingNumber}`)
+            // populate purchase - shipping address
+            purchase.shippingAddress = this.checkoutFormGroup.controls['shippingAddress'].value;
+            const shippingState: State = JSON.parse(JSON.stringify(purchase.shippingAddress.state))
+            const shippingCountry: Country = JSON.parse(JSON.stringify(purchase.shippingAddress.country))
+            purchase.shippingAddress.state = shippingState.name;
+            purchase.shippingAddress.country = shippingCountry.name;
 
-        // reset the cart
-        this.resetCart();
+            // populate purchase - billing address
+            purchase.billingAddress = this.checkoutFormGroup.controls['billingAddress'].value;
+            const billingState: State = JSON.parse(JSON.stringify(purchase.billingAddress.state))
+            const billingCountry: Country = JSON.parse(JSON.stringify(purchase.billingAddress.country))
+            purchase.billingAddress.state = billingState.name;
+            purchase.billingAddress.country = billingCountry.name;
 
-      },
-      // error is the error/ exception handling path
-      error: err => {
-        alert(`There was an error: ${err.message}`);
-      }
-    }
-    )
-  }
-  
-  resetCart() {
-    // reset cart data
-    // set cartItems array to an empty array, clears it out
-    this.cartService.cartItems = [];
-    // set next on cartService properties to send out the new value (0) to all subscribers
-    this.cartService.totalPrice.next(0);
-    this.cartService.totalQuantity.next(0);
+            // populate purchase - order and orderItems
+            purchase.order = order;
+            purchase.orderItems = orderItemsShort;
 
-    // reset form data
-    this.checkoutFormGroup.reset();
 
-    // navigate back to the main products page
-    // router was injected in the constructor
-    this.router.navigateByUrl("/products");
-  }
+            // call REST API via the CheckoutService
+            this.checkoutService.placeOrder(purchase).subscribe({
+            // next is the success/ happy path
+            next: response => {
+                // here we are generating an alert that is grabbing the newly created tracking number from the Spring backend through JSON
+                alert(`Your order has been received. \nOrder tracking number: ${response.orderTrackingNumber}`)
+
+                // reset the cart
+                this.resetCart();
+
+            },
+            // error is the error/ exception handling path
+            error: err => {
+                alert(`There was an error: ${err.message}`);
+            }
+            }
+            )
+        }
+
+        resetCart() {
+            // reset cart data
+            // set cartItems array to an empty array, clears it out
+            this.cartService.cartItems = [];
+            // set next on cartService properties to send out the new value (0) to all subscribers
+            this.cartService.totalPrice.next(0);
+            this.cartService.totalQuantity.next(0);
+
+            // reset form data
+            this.checkoutFormGroup.reset();
+
+            // navigate back to the main products page
+            // router was injected in the constructor
+            this.router.navigateByUrl("/products");
+        }
 
 ### Cart Service - Publishing messages/events
 
