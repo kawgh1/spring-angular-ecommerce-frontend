@@ -9,8 +9,8 @@ import { Purchase } from '../common/purchase';
 export class CheckoutService {
 
   // set up purchaseUrl - Url to the Spring Boot backend
-  private purchaseUrl = 'http://localhost:8080/api/checkout/purchase' // development
-  // private purchaseUrl = 'https://springboot-angular-ecommerce.herokuapp.com/api/checkout/purchase' // production
+  // private purchaseUrl = 'http://localhost:8080/api/checkout/purchase' // development
+  private purchaseUrl = 'https://springboot-angular-ecommerce.herokuapp.com/api/checkout/purchase' // production
 
 
   constructor(private httpClient: HttpClient) { }
