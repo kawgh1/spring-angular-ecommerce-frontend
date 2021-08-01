@@ -18,23 +18,25 @@
         <hr>
 
 
+        <div>
+            <button style="margin: 1rem;" (click)="addToCart()" class="btn btn-primary btn-sm">Add to
+                cart</button>
 
-
-        <button style="margin-left: 1rem;" (click)="addToCart()" class="btn btn-primary btn-sm">Add to
-            cart</button>
-
-        <!-- item added to cart alert, with dynamically generated id's 
-        so alert only appears on the product card added to cart -->
-        <div style="margin: 0; text-align: center;" class="alert alert-success" id="addToCartAlert" hidden>
-            <strong>Added</strong>
-            to cart!
+            <!-- item added to cart alert, with dynamically generated id's 
+            so alert only appears on the product card added to cart -->
+            <div style=" text-align: center;" class="alert alert-success" id="addToCartAlert" hidden>
+                <strong>Added</strong>
+                to cart!
+            </div>
         </div>
 
-        <div id="filler" height="100px"><br><br></div>
+
+
+        <div id="filler" style="height: 42px;"></div>
 
 
         <!-- link back to previous products page  -->
-        <a href="javascript:history.back()" class="mt-5">Back
+        <a href="javascript:history.back()">Back
             to Products</a>
 
 

@@ -27,15 +27,21 @@
                             <h1>{{ tempProduct.name }}</h1>
                         </a>
 
-                        <div class="price">{{ tempProduct.unitPrice | currency:'USD' }}</div>
-                        <button (click)="addToCart(tempProduct)" class="btn btn-primary btn-sm">Add to cart</button>
+                        <div class="product-text">
+                            <!-- item added to cart alert, with dynamically generated id's 
+                                so alert only appears on the product card added to cart -->
+                            <div class="alert alert-success" id="{{ 'alert' + tempProduct.id}}" hidden>
+                                <strong>Added</strong>
+                                to cart!
+                            </div>
 
-                        <!-- item added to cart alert, with dynamically generated id's 
-                            so alert only appears on the product card added to cart -->
-                        <div class="alert alert-success" id="{{ 'alert' + tempProduct.id}}" hidden>
-                            <strong>Added</strong>
-                            to cart!
+
+                            <div class="price">
+                                <hr>{{ tempProduct.unitPrice | currency:'USD' }}
+                            </div>
+                            <button (click)="addToCart(tempProduct)" class="btn btn-primary btn-sm">Add to cart</button>
                         </div>
+
 
 
 

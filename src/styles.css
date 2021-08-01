@@ -563,6 +563,7 @@ input.au-input.au-input-xl{
     text-align: center;
     box-shadow: 1px 1px 10px 1px rgb(200, 240, 240);
     border-radius: 8px;
+    position: relative;
 }
 .price{
     margin:2rem;
@@ -574,7 +575,7 @@ input.au-input.au-input-xl{
 .product-box h1{
     height: 25%;
     font-size:1.3rem;
-    border-bottom:1px solid #ccc;
+    /* border-bottom:1px solid #ccc; */
     padding:1rem;
     font-weight:600;
     padding-top:12px;
@@ -586,6 +587,13 @@ input.au-input.au-input-xl{
     padding-bottom:0;
     font-weight:500;
     color:#585858
+}
+
+.product-text {
+    position: absolute;
+    bottom: 20px;
+    left: 5%;
+    width: 90%;
 }
 
 .product-container {
@@ -771,6 +779,7 @@ table.table.table-bordered th{
 }
 .detail-section{
     margin-top:60px
+    
 }
 
 .detail-img {
@@ -778,8 +787,12 @@ table.table.table-bordered th{
 }
 
 .alert-success {
-    transform: scale(.6);
-    font-size: 24px;
+    /* transform: scale(.6); */
+    font-size: 12px;
+    position:absolute;
+    left: 10px;
+    width: 200px;
+    /* margin: auto; */
     /* position: fixed;
     left: 50%;
     /* top: 50vh; 
@@ -838,7 +851,7 @@ footer{
     background:#232324;
     z-index:1;
     position:relative;
-    text-align:center
+    text-align:center;
 }
 footer li a{
     color:#313131;
@@ -848,6 +861,10 @@ footer ul li{
     display:inline-block;
     font-size:14px;
     padding:10px 20px
+}
+
+footer ul {
+    margin-bottom: 0px;
 }
 
 /* mobile background image */
@@ -1278,7 +1295,7 @@ footer ul li{
     .product-box h1{
         height: 15%;
         font-size:.9rem;
-        border-bottom:1px solid #ccc;
+        /* border-bottom:1px solid #ccc; */
         padding:.2rem;
         font-weight:600;
         margin-bottom:0px;
@@ -1292,6 +1309,11 @@ footer ul li{
         color:#585858
     }
 
+    .product-text {
+
+        bottom: 5px;
+    }
+
     .col-md-3 {
         margin: .5rem;
         padding: 0px 0px;
@@ -1302,9 +1324,21 @@ footer ul li{
         font-size: 12px;
     }
 
+    .alert {
+        padding: 5px;
+        height: 20px;
+        padding-bottom: 50px;
+        top: 10px;
+        font-size: 12px;
+    }
+
     .alert-success {
         /* transform: scale(.6); */
         font-size: 14px;
+        width: auto;
+        text-align: center;
+        line-height: 10px;
+        left: 0px;
         /* position: fixed;
         left: 50%;
         /* top: 50vh; 
