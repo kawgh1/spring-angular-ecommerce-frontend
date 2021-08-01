@@ -4,7 +4,12 @@ import { ShopFormService } from 'src/app/services/shop-form.service';
 import { Country } from 'src/app/common/country';
 import { State } from 'src/app/common/state';
 import { CartService } from 'src/app/services/cart.service';
+import { CheckoutService } from 'src/app/services/checkout.service';
 import { TechTonicValidators } from 'src/app/validators/tech-tonic-validators'
+import { Router } from '@angular/router';
+import { Order } from 'src/app/common/order';
+import { OrderItem } from 'src/app/common/order-item';
+import { Purchase } from 'src/app/common/purchase';
 
 @Component({
   selector: 'app-checkout',
@@ -32,9 +37,16 @@ export class CheckoutComponent implements OnInit {
 
 
 
+  // constructor(private formBuilder: FormBuilder,
+  //   private shopFormService: ShopFormService,
+  //   private cartService: CartService) { }
+
+  // adding CheckoutService and Router for purchasing orders, sending to backend
   constructor(private formBuilder: FormBuilder,
     private shopFormService: ShopFormService,
-    private cartService: CartService) { }
+    private cartService: CartService,
+    private checkoutService: CheckoutService,
+    private router: Router) { }
 
 
 
@@ -214,19 +226,98 @@ export class CheckoutComponent implements OnInit {
 
     if (this.checkoutFormGroup.invalid) {
       this.checkoutFormGroup.markAllAsTouched();
+      return;
     }
-    console.log(this.checkoutFormGroup.get('customer').value);
+    // console.log(this.checkoutFormGroup.get('customer').value);
 
-    console.log("The customer email address is " + this.checkoutFormGroup.get('customer').value.email);
+    // console.log("The customer email address is " + this.checkoutFormGroup.get('customer').value.email);
 
-    console.log("The customer shipping state is " + this.checkoutFormGroup.get('shippingAddress').value.state);
-    console.log("The customer shipping country is " + this.checkoutFormGroup.get('shippingAddress').value.country);
+    // console.log("The customer shipping state is " + this.checkoutFormGroup.get('shippingAddress').value.state);
+    // console.log("The customer shipping country is " + this.checkoutFormGroup.get('shippingAddress').value.country);
 
     // show "added to cart" message when clicked on product card
     // document.getElementById("alert-purchase").hidden = false;
     // setTimeout(() => {
     //   document.getElementById("alert-purchase").hidden = true;
     // }, 10000);
+
+    // set up order
+    // new order instance
+    let order = new Order();
+    order.totalPrice = this.totalPrice;
+    order.totalQuantity = this.totalQuantity;
+
+    // get cart items
+    const cartItems = this.cartService.cartItems;
+
+    // create orderItems from cartItems
+    // - long way - for loop
+    // let orderItems: OrderItem[] = [];
+    // for (let i = 0; i < cartItems.length; i++) {
+    //   orderItems[i] = new OrderItem(cartItems[i]);
+    // }
+
+    // - short way - mapping
+    let orderItemsShort: OrderItem[] = cartItems.map(tempCartItem => new OrderItem(tempCartItem));
+
+    // set up purchase object
+    let purchase = new Purchase();
+
+    // populate purchase - customer
+    purchase.customer = this.checkoutFormGroup.controls['customer'].value;
+
+
+    // populate purchase - shipping address
+    purchase.shippingAddress = this.checkoutFormGroup.controls['shippingAddress'].value;
+    const shippingState: State = JSON.parse(JSON.stringify(purchase.shippingAddress.state))
+    const shippingCountry: Country = JSON.parse(JSON.stringify(purchase.shippingAddress.country))
+    purchase.shippingAddress.state = shippingState.name;
+    purchase.shippingAddress.country = shippingCountry.name;
+
+    // populate purchase - billing address
+    purchase.billingAddress = this.checkoutFormGroup.controls['billingAddress'].value;
+    const billingState: State = JSON.parse(JSON.stringify(purchase.billingAddress.state))
+    const billingCountry: Country = JSON.parse(JSON.stringify(purchase.billingAddress.country))
+    purchase.billingAddress.state = billingState.name;
+    purchase.billingAddress.country = billingCountry.name;
+
+    // populate purchase - order and orderItems
+    purchase.order = order;
+    purchase.orderItems = orderItemsShort;
+
+
+    // call REST API via the CheckoutService
+    this.checkoutService.placeOrder(purchase).subscribe({
+      // next is the success/ happy path
+      next: response => {
+        // here we are generating an alert that is grabbing the newly created tracking number from the Spring backend through JSON
+        alert(`Your order has been received. \nOrder tracking number: ${response.orderTrackingNumber}`)
+
+        // reset the cart
+        this.resetCart();
+
+      },
+      // error is the error/ exception handling path
+      error: err => {
+        alert(`There was an error: ${err.message}`);
+      }
+    }
+    )
+  }
+  resetCart() {
+    // reset cart data
+    // set cartItems array to an empty array, clears it out
+    this.cartService.cartItems = [];
+    // set next on cartService properties to send out the new value (0) to all subscribers
+    this.cartService.totalPrice.next(0);
+    this.cartService.totalQuantity.next(0);
+
+    // reset form data
+    this.checkoutFormGroup.reset();
+
+    // navigate back to the main products page
+    // router was injected in the constructor
+    this.router.navigateByUrl("/products");
   }
 
 
