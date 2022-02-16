@@ -1,0 +1,150 @@
+/* 
+
+    Copy from styles.css -> .au-btn-submit
+    Rename as .security-btn
+    Change border to 10px 
+
+*/
+
+
+ /* desktop */
+
+ .security-btn{
+    position:relative;
+    /* right:-10px; */
+    margin: 5px;
+    min-width:85px;
+    font-weight: 500;
+    color:#fff;
+    /* border:5px solid #205b8d; */
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border-radius:43px;
+    background:#205b8d;
+}
+
+.buttons-div {
+    max-width: 100px;
+    margin-left: 30px;
+}
+
+.member-btn{
+    position:relative;
+    /* right:-10px; */
+    margin: 3px;
+    min-width:85px;
+    font-weight: 500;
+    color:#fff;
+    /* border:5px solid #59d0ff; */
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border-radius:43px;
+    background:#59d0ff;
+}
+
+.orders-btn{
+    position:relative;
+    /* right:-10px; */
+    margin: 3px;
+    min-width:85px;
+    font-weight: 500;
+    color:#fff;
+    /* border:5px solid #3702f7; */
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border-radius:43px;
+    background:#4615f8;
+}
+
+@media (max-width:990px){
+    .member-btn, .security-btn, .orders-btn {
+
+        position:relative;
+    /* right:-10px; */
+    margin: 3px;
+    max-width:45px;
+    font-weight: 500;
+    color:#fff;
+    border: none;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border-radius:43px;
+        
+    }
+}
+
+.member-btn:hover {
+    -webkit-transition:all 1s ease;
+    -o-transition:all 1s ease;
+    -moz-transition:all 1s ease;
+    transition:all 1s ease;
+    border:5px solid #1ea4da;
+    background:#1ea4da;
+}
+
+.security-btn:hover {
+    -webkit-transition:all 1s ease;
+    -o-transition:all 1s ease;
+    -moz-transition:all 1s ease;
+    transition:all 1s ease;
+    border:5px solid #103e66;
+    background:#103e66;
+}
+
+/* mobile size */
+/* .security-btn{
+    position:relative;
+    right:10px;
+    min-width:40px;
+    font-weight: 600;
+    color:#fff;
+    border:10px solid #205b8d;
+    -webkit-border-top-right-radius:15px;
+    -moz-border-bottom-right-radius:15px;
+    border-top-right-radius:15px;
+    border-bottom-right-radius: 15px;
+    background:#205b8d;
+    height: 35px;
+} */
+
+/* 
+    Copy from styles.css -> .form-header
+    Rename as .login-status-header
+*/
+
+.login-status-header{
+    display:-webkit-box;
+    display:-webkit-flex;
+    display:-moz-box;
+    display:-ms-flexbox;
+    display:flex;
+    justify-content:space-evenly;
+    align-items: center;
+    background: black;
+    
+
+    max-height: 90px;
+}
+
+
+
+/* 
+    Copy from styles.css -> .au-input
+    Rename as .login-status-user-info
+    - remove 'solid', 'font-size', 'color'
+    */
+
+    .login-status-user-info{
+        line-height:23px;
+        font-size: 1.1rem;
+        
+        padding:5px;
+        margin-left: 30px;
+        -webkit-border-radius:3px;
+        -moz-border-radius:3px;
+        border-radius:3px;
+        -webkit-transition:all .5s ease;
+        -o-transition:all .5s ease;
+        -moz-transition:all .5s ease;
+        transition:all .5s ease
+    }

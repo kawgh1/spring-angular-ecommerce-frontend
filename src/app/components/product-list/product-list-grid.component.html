@@ -1,0 +1,144 @@
+<div class="main-content">
+    <div class="section-content section-content-p30">
+
+
+
+
+
+        <h4>{{ currentCategoryName }}</h4>
+        <hr>
+
+        <!-- grid styles in styles.css product container-->
+        <div class="container-fluid ">
+            <div class="product-container ">
+
+                <!-- loop over the collection of products -->
+                <div *ngFor="let tempProduct of products">
+
+                    <div class="product-box ">
+
+                        <!-- link to product details on image -->
+                        <a routerLink="/products/{{ tempProduct.id }}">
+                            <img src="{{ tempProduct.imageUrl }}" class="img-responsive">
+                        </a>
+
+                        <!-- link to product details on name -->
+                        <a routerLink="/products/{{ tempProduct.id }}">
+                            <h1>{{ tempProduct.name }}</h1>
+                        </a>
+
+                        <div class="product-text">
+                            <!-- item added to cart alert, with dynamically generated id's 
+                                so alert only appears on the product card added to cart -->
+                            <div class="alert alert-success" id="{{ 'alert' + tempProduct.id}}" hidden>
+                                <strong>Added</strong>
+                                to cart!
+                            </div>
+
+
+                            <div class="price">
+                                <hr>{{ tempProduct.unitPrice | currency:'USD' }}
+                            </div>
+                            <button (click)="addToCart(tempProduct)" class="btn btn-primary btn-sm">Add to cart</button>
+                        </div>
+
+
+
+
+
+                    </div>
+
+                </div>
+
+                <!-- if products empty then display a message-->
+                <div class="alert alert-warning col-md-12" id="alertSearch" role="alert" style="min-height: 60px;"
+                    hidden>
+                    Sorry! No products found!
+                </div>
+
+
+
+
+            </div>
+
+        </div>
+
+        <!-- begin footer -->
+        <div class="footer-pagination ">
+            <!--  if products empty / not found, then don't display pagination -->
+            <div *ngIf="theTotalElements != 0" class="row">
+                <div class="col-md-6"></div>
+
+                <div class="col-md-6">
+                    <div class="col-md-3">
+
+                        <ngb-pagination [(page)]="thePageNumber" [pageSize]="thePageSize"
+                            [collectionSize]="theTotalElements" [maxSize]="5" [boundaryLinks]="true"
+                            (pageChange)="listProducts()">
+
+                        </ngb-pagination>
+
+                    </div>
+
+                    <div class="col-md-3 mt-2" style="margin-left:25%;">
+                        <span class="mr-2">Page Size</span>
+
+                        <select (change)="updatePageSize($event.target.value)">
+                            <option>2</option>
+                            <option>5</option>
+                            <option selected="true">10</option>
+                            <option>20</option>
+                            <option>50</option>
+                        </select>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+        <!-- end footer -->
+
+
+
+    </div>
+</div>
+
+<!-- First draft - basic table view
+    
+    <table class="table">
+
+    <thead class="thead-dark">
+        <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Units in Stock</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        <tr *ngFor="let tempProduct of products">
+            <td class="align-middle">
+                <img src="{{ tempProduct.imageUrl }}" height="50" />
+            </td>
+            <td class="align-middle">{{ tempProduct.name }}</td>
+            <td class="align-middle">{{ tempProduct.unitPrice | currency: 'USD' }}</td>
+            <td class="align-middle">{{ tempProduct.unitsInStock }}</td>
+
+
+        </tr>
+    </tbody>
+</table> -->
+
+
+
+
+<!-- here we are accessing the products from the product-list.component.ts -->
+<!-- <p *ngFor="let tempProduct of products">
+
+    {{ tempProduct.name }}: {{ tempProduct.unitPrice | currency: 'USD' }}
+</p> -->

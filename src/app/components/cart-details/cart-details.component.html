@@ -1,0 +1,89 @@
+<div class="main-content">
+    <div class="section-content section-content-30" style="left:1rem;">
+        <div class="container-fluid" style="max-width: 95%;">
+
+            <!-- display message if cart empty -->
+            <div *ngIf="cartItems.length == 0" class="alert alert-warning col-md-12" style="left:50px; min-height:40px;"
+                role="alert">
+                No items in cart!
+            </div>
+
+            <div *ngIf="cartItems.length > 0">
+                <table class="table table-bordered">
+                    <tr>
+                        <th width="25%">Product</th>
+                        <th width="50%">Details</th>
+                        <th width="25%">Totals</th>
+                    </tr>
+
+                    <tr *ngFor="let tempCartItem of cartItems">
+                        <td>
+                            <img src="{{ tempCartItem.imageUrl }}" class="img-responsive" />
+                        </td>
+                        <td>
+                            <p style="padding-left: 5%">{{ tempCartItem.name }}</p>
+                            <p style="padding-left: 5%">{{ tempCartItem.unitPrice | currency: 'USD' }}</p>
+                        </td>
+                        <td style="padding-bottom: 0;">
+                            <div class="items">
+
+
+
+                                <div class="row no-gutters" style="padding-left: 10%">
+                                    <label>Quantity: </label>
+                                    <!-- spacer -->
+                                    <div class="col-1"></div>
+                                    <!-- quantity increment -->
+                                    <div class="col">
+
+                                        <button (click)="incrementQuantity(tempCartItem)"
+                                            class="btn btn-primary btn-sm">
+                                            <i class="fas fa-plus" style="font-size: 8px; "></i>
+                                        </button>
+
+                                        {{ tempCartItem.quantity }}
+
+                                        <button (click)="decrementQuantity(tempCartItem)"
+                                            class="btn btn-primary btn-sm">
+                                            <i class="fas fa-minus" style="font-size: 8px; "></i>
+                                        </button>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+
+                            <p class="mt-2" style="padding-left: 10%">Subtotal:
+                                {{ tempCartItem.quantity * tempCartItem.unitPrice | currency: 'USD' }}
+                                <br>
+                                <br>
+                                <!-- remove button  -->
+                                <button (click)="remove(tempCartItem)" class="btn btn-primary btn-sm mt-2"
+                                    style="font-size: .65rem; background-color: darkblue;">remove</button>
+                            </p>
+
+
+                        </td>
+                    </tr>
+
+                    <!-- Total Quantity and Total Price -->
+
+                    <tr *ngIf="totalQuantity != 0">
+                        <td colspan="2"></td>
+                        <td style="font-weight: bold; padding-left: 2%;">
+
+                            <p>Total Quantity: {{ totalQuantity }}</p>
+                            <p>Shipping: FREE</p>
+                            <p>Total Price: {{ totalPrice | currency: 'USD' }}</p>
+                            <a routerLink="/checkout" class="btn btn-primary" style="font-size: .65rem">Checkout</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+
+        </div>
+    </div>
+</div>

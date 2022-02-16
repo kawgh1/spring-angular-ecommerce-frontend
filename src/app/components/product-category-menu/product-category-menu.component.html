@@ -1,0 +1,37 @@
+<div class="menu-sidebar-content js-scrollbar1">
+    <nav class="navbar-sidebar">
+        <ul class="list-unstyled navbar-list">
+
+
+
+            <li *ngFor="let tempProductCategory of productCategories">
+                <!-- replace href with router link -->
+                <!--  <a href="#">Books</a>  -->
+                <a routerLink="/category/{{ tempProductCategory.id }}/{{ tempProductCategory.categoryName }}"
+                    routerLinkActive="active-link">
+
+                    {{ tempProductCategory.categoryName }}
+
+                </a>
+
+            </li>
+
+            <!-- <li>
+                <!-- replace href with router link 
+                <!--  <a href=" #">Coffee Mugs</a>
+                <a routerLink="/category/1" routerLinkActive="active-link">Books</a>
+            </li>
+            <li>
+                <!-- replace href with router link 
+                <!--  <a href="#">Coffee Mugs</a>  
+                <a routerLink="/category/2" routerLinkActive="active-link">Mugs</a>
+            </li>
+            <li>
+          <a href="#">Mouse Pads</a>
+        </li>
+        <li>
+          <a href="#">Luggage Tags</a>
+        </li> -->
+        </ul>
+    </nav>
+</div>
